@@ -1,0 +1,8 @@
+1. Todas las pestañas de usuario estan listas para usarse.
+
+2. Los requerimientos funcionales implementados son: 
+
+A) Agregar cliente a la base conceptual del programa.
+
+B) Calcular un prestamo de manera correcta segun los requerimientos 
+funcionales desarrollados en la documentacion.
