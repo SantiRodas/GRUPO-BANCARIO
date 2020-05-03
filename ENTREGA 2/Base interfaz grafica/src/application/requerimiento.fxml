@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="449.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="21.0" layoutY="14.0" text="Digite el salario de la persona (sin puntos ni comas, solo los numeros) ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="salarioTexto" layoutX="225.0" layoutY="63.0" />
+      <RadioButton fx:id="opcion1" layoutX="314.0" layoutY="147.0" mnemonicParsing="false" text="12 meses">
+         <toggleGroup>
+            <ToggleGroup fx:id="cuotas" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="opcion2" layoutX="314.0" layoutY="184.0" mnemonicParsing="false" text="24 meses" toggleGroup="$cuotas" />
+      <RadioButton fx:id="opcion3" layoutX="314.0" layoutY="221.0" mnemonicParsing="false" text="36 meses" toggleGroup="$cuotas" />
+      <Label layoutX="21.0" layoutY="179.0" text="Seleccione el numero de cuotas:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="calcular" layoutX="285.0" layoutY="283.0" mnemonicParsing="false" onAction="#calcularTodo" text="Calcular" />
+      <Label layoutX="171.0" layoutY="353.0" text="Deuda total:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="159.0" layoutY="399.0" text="Valor por cuota:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="deuda" layoutX="310.0" layoutY="355.0" text="..." />
+      <Label fx:id="cuota" layoutX="309.0" layoutY="401.0" text="...." />
+   </children>
+</Pane>
