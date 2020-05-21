@@ -8,8 +8,6 @@
 
 package modelo;
 
-import java.util.ArrayList;
-
 public class Empleado extends Persona {
 	
 	// ---------------------------------------------------------------------------------------
@@ -18,13 +16,7 @@ public class Empleado extends Persona {
 	
 	private String tipo;
 	private int salario;
-	
-	// ******************************************
-	
-	// RELACION TIPO ARRAYLIST CON LA CLASE SEGURO
-	
-	private ArrayList<Seguro> seguros;
-	
+		
 	// ---------------------------------------------------------------------------------------
 	
 	// METODO CONTRUCTOR DE LA CLASE EMPLEADO QUE HEREDA DE LA CLASE PERSONA
@@ -35,9 +27,7 @@ public class Empleado extends Persona {
 		
 		this.tipo = tipo;
 		this.salario = salario;
-		
-		seguros = new ArrayList<Seguro>();
-		
+				
 	}
 	
 	// ---------------------------------------------------------------------------------------
@@ -52,14 +42,6 @@ public class Empleado extends Persona {
 		return salario;
 	}
 	
-	// ******************************************
-	
-	// METODO GET DE LA RELACION TIPO ARRAYLIST CON LA CLASE SEGURO
-	
-	public ArrayList<Seguro> getSeguros() {
-		return seguros;
-	}
-	
 	// ---------------------------------------------------------------------------------------
 	
 	// METODOS SET DE LA CLASE EMPLEADO
@@ -71,15 +53,7 @@ public class Empleado extends Persona {
 	public void setSalario(int salario) {
 		this.salario = salario;
 	}
-	
-	// ******************************************
-	
-	// METODO SET DE LA RELACION TIPO ARRAYLIST CON LA CLASE SEGURO
-	
-	public void setSeguros(ArrayList<Seguro> seguros) {
-		this.seguros = seguros;
-	}
-	
+		
 	// ---------------------------------------------------------------------------------------
 
 }

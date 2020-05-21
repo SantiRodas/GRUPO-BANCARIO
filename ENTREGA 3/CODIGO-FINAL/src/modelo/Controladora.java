@@ -8,7 +8,7 @@
 
 package modelo;
 
-public class Controladora {
+public class Controladora implements General {
 	
 	// ---------------------------------------------------------------------------------------
 	
@@ -44,5 +44,159 @@ public class Controladora {
 	
 	// ---------------------------------------------------------------------------------------
 	
+	// METODO PRINCIPAL AGREGAR QUE HACE EL LLAMADO AL METODO RECURSIVO
 
+	public Banco agregar(String nombre, String id) {
+		
+		return agregarRecursivo(nombre, id, primerBanco);
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO PARA AGREGAR UN BANCO AL SISTEMA RECURSIVO
+	
+	private Banco agregarRecursivo(String nombre, String id, Banco nodo) {
+		
+		if(primerBanco == null) {
+			
+			primerBanco = new Banco(nombre, id);
+			
+			return primerBanco;
+			
+		} else {
+			
+			if(nodo.getSiguiente() != null) {
+				
+				return agregarRecursivo(nombre, id, nodo.getSiguiente());
+				
+			} else {
+				
+				nodo.setSiguiente(new Banco(nombre, id));
+				
+				return nodo;
+				
+			}
+			
+		}
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO PARA BUSCAR PRINCIPAL QUE HACE EL LLAMADO AL METODO RECURSIVO (RETORNA BOOLEAN)
+
+	@Override
+	public boolean buscar(String id) {
+
+		return buscarRecursivo(id, primerBanco);
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO PARA BUSCAR UN BANCO EN EL SISTEMA RECURSIVO (RETORNA BOOLEAN)
+	
+	private boolean buscarRecursivo(String id, Banco nodo) {
+		
+		if(nodo == null) {
+			
+			return false;
+			
+		} else if(nodo.getId().equalsIgnoreCase(id)) {
+			
+			return true;
+			
+		} else {
+			
+			return buscarRecursivo(id, nodo.getSiguiente());
+			
+		}
+
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO PARA BUSCAR UN BANCO EN EL SISTEMA (RETORNA EL BANCO O NULL)
+	
+	public Banco buscarBanco(String id) {
+		
+		if(primerBanco != null) {
+			
+			Banco temporal = primerBanco;
+			
+			while(temporal != null) {
+				
+				if(temporal.getId().equalsIgnoreCase(id)) {
+					
+					return temporal;
+					
+				}
+				
+				temporal = temporal.getSiguiente();
+				
+			}
+			
+		}
+		
+		return null;
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO PARA ELIMINAR PRINCIPAL QUE HACE EL LLAMADO AL METODO RECURSIVO (RETORNA BOOLEAN)
+
+	@Override
+	public boolean eliminar(String id) {
+
+		return eliminarRecursivo(id, primerBanco, null);
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO PARA ELIMINAR UN BANCO EN EL SISTEMA RECURSIVO (RETORNA BOOLEAN)
+	
+	private boolean eliminarRecursivo(String id, Banco nodo, Banco anterior) {
+		
+		if(nodo == null) {
+			
+			return false;
+			
+		} else if(nodo.getId().equalsIgnoreCase(id)) {
+			
+			if(anterior == null) {
+				
+				primerBanco = primerBanco.getSiguiente();
+				
+				nodo.setSiguiente(null);
+				
+				nodo = primerBanco;
+				
+				return true;
+				
+			} else {
+				
+				anterior.setSiguiente(nodo.getSiguiente());
+				
+				nodo.setSiguiente(null);
+				
+				nodo = anterior.getSiguiente();
+				
+				return true;
+				
+			}
+			
+		} else {
+			
+			anterior = nodo;
+			
+			return eliminarRecursivo(id, nodo.getSiguiente(), anterior);
+			
+		}
+
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
 }

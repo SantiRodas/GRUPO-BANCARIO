@@ -41,6 +41,12 @@ public class Persona {
 	
 	private ArrayList<Beneficio> beneficios;
 	
+	// ******************************************
+	
+	// RELACION TIPO ARRAYLIST CON LA CLASE SEGURO
+	
+	private ArrayList<Seguro> seguros;
+	
 	// ---------------------------------------------------------------------------------------
 	
 	// METODO CONSTRUCTOR DE LA CLASE PERSONA
@@ -59,6 +65,8 @@ public class Persona {
 		root = null;
 		
 		beneficios = new ArrayList<Beneficio>();
+		
+		seguros = new ArrayList<Seguro>();
 		
 	}
 	
@@ -114,6 +122,14 @@ public class Persona {
 		return beneficios;
 	}
 	
+	// ******************************************
+	
+	// METODO GET DE LA RELACION TIPO ARRAYLIST CON LA CLASE SEGURO
+	
+	public ArrayList<Seguro> getSeguros() {
+		return seguros;
+	}
+	
 	// ---------------------------------------------------------------------------------------
 	
 	// METODOS SET DE LOS ATRIBUTOS DE LA CLASE PERSONA
@@ -164,6 +180,14 @@ public class Persona {
 
 	public void setBeneficios(ArrayList<Beneficio> beneficios) {
 		this.beneficios = beneficios;
+	}
+	
+	// ******************************************
+	
+	// METODO SET DE LA RELACION TIPO ARRAYLIST CON LA CLASE SEGURO
+	
+	public void setSeguros(ArrayList<Seguro> seguros) {
+		this.seguros = seguros;
 	}
 	
 	// ---------------------------------------------------------------------------------------	
