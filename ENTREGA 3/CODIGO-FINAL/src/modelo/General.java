@@ -8,19 +8,21 @@
 
 package modelo;
 
+import excepciones.NoExisteInformacionExcepcion;
+
 public interface General {
 	
 	// ---------------------------------------------------------------------------------------
 	
 	// METODO COMPARTIDO PARA BUSCAR
 	
-	public boolean buscar(String id);
+	public boolean buscar(String id) throws NoExisteInformacionExcepcion;
 	
 	// ******************************************
 	
 	// METODO COMPARTIDO PARA ELIMINAR
 	
-	public boolean eliminar(String id);
+	public boolean eliminar(String id) throws NoExisteInformacionExcepcion;
 
 	// ---------------------------------------------------------------------------------------
 

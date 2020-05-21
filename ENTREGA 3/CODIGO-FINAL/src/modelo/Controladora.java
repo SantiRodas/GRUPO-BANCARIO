@@ -8,6 +8,9 @@
 
 package modelo;
 
+import excepciones.InformacionExisteExcepcion;
+import excepciones.NoExisteInformacionExcepcion;
+
 public class Controladora implements General {
 	
 	// ---------------------------------------------------------------------------------------
@@ -46,9 +49,17 @@ public class Controladora implements General {
 	
 	// METODO PRINCIPAL AGREGAR QUE HACE EL LLAMADO AL METODO RECURSIVO
 
-	public Banco agregar(String nombre, String id) {
+	public Banco agregar(String nombre, String id) throws InformacionExisteExcepcion {
 		
-		return agregarRecursivo(nombre, id, primerBanco);
+		if(buscar(id) == true) {
+			
+			throw new InformacionExisteExcepcion("LA INFORMACION QUE DESEA AGREGAR YA EXISTE EN EL PROGRAMA");
+			
+		} else {
+			
+			return agregarRecursivo(nombre, id, primerBanco);
+			
+		}
 		
 	}
 	
@@ -97,7 +108,7 @@ public class Controladora implements General {
 	
 	// METODO PARA BUSCAR UN BANCO EN EL SISTEMA RECURSIVO (RETORNA BOOLEAN)
 	
-	private boolean buscarRecursivo(String id, Banco nodo) {
+	private boolean buscarRecursivo(String id, Banco nodo){
 		
 		if(nodo == null) {
 			
@@ -147,7 +158,7 @@ public class Controladora implements General {
 	// METODO PARA ELIMINAR PRINCIPAL QUE HACE EL LLAMADO AL METODO RECURSIVO (RETORNA BOOLEAN)
 
 	@Override
-	public boolean eliminar(String id) {
+	public boolean eliminar(String id) throws NoExisteInformacionExcepcion {
 
 		return eliminarRecursivo(id, primerBanco, null);
 		
@@ -157,11 +168,11 @@ public class Controladora implements General {
 	
 	// METODO PARA ELIMINAR UN BANCO EN EL SISTEMA RECURSIVO (RETORNA BOOLEAN)
 	
-	private boolean eliminarRecursivo(String id, Banco nodo, Banco anterior) {
+	private boolean eliminarRecursivo(String id, Banco nodo, Banco anterior) throws NoExisteInformacionExcepcion {
 		
 		if(nodo == null) {
 			
-			return false;
+			throw new NoExisteInformacionExcepcion("LA INFORMACION BUSCADA NO EXISTE EN EL PROGRAMA");
 			
 		} else if(nodo.getId().equalsIgnoreCase(id)) {
 			

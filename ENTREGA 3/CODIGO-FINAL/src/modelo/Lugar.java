@@ -8,6 +8,9 @@
 
 package modelo;
 
+import excepciones.InformacionExisteExcepcion;
+import excepciones.NoExisteInformacionExcepcion;
+
 public class Lugar implements General {
 	
 	// ---------------------------------------------------------------------------------------
@@ -178,9 +181,17 @@ public class Lugar implements General {
 	
 	// METODO PRINCIPAL AGREGAR QUE HACE EL LLAMADO AL METODO RECURSIVO
 	
-	public Cliente agregarCliente(String nombre, String id, String direccion, String estratoEconomico, String email, String contrasena) {
+	public Cliente agregarCliente(String nombre, String id, String direccion, String estratoEconomico, String email, String contrasena) throws InformacionExisteExcepcion {
 		
-		return agregarRecursivoCliente(nombre, id, direccion, estratoEconomico, email, contrasena, primerCliente);
+		if(buscar(id) == true) {
+			
+			throw new InformacionExisteExcepcion("LA INFORMACION QUE DESEA AGREGAR YA EXISTE EN EL PROGRAMA");
+			
+		} else {
+			
+			return agregarRecursivoCliente(nombre, id, direccion, estratoEconomico, email, contrasena, primerCliente);
+			
+		}
 		
 	}
 	
@@ -218,9 +229,17 @@ public class Lugar implements General {
 	
 	// METODO PRINCIPAL AGREGAR QUE HACE EL LLAMADO AL METODO RECURSIVO
 	
-	public Empleado agregarEmpleado(String nombre, String id, String direccion, String estratoEconomico, String email, String tipo, int salario) {
+	public Empleado agregarEmpleado(String nombre, String id, String direccion, String estratoEconomico, String email, String tipo, int salario) throws InformacionExisteExcepcion {
 		
-		return agregarRecursivoEmpleado(nombre, id, direccion, estratoEconomico, email, tipo, salario, primerEmpleado);
+		if(buscarEmpleado(id) == true) {
+			
+			throw new InformacionExisteExcepcion("LA INFORMACION QUE DESEA AGREGAR YA EXISTE EN EL PROGRAMA");
+			
+		} else {
+			
+			return agregarRecursivoEmpleado(nombre, id, direccion, estratoEconomico, email, tipo, salario, primerEmpleado);
+			
+		}
 		
 	}
 	
@@ -256,23 +275,231 @@ public class Lugar implements General {
 	
 	// ---------------------------------------------------------------------------------------
 	
+	// METODO PRINCIPAL DE BUSCAR CLIENTE QUE HACE EL LLAMADO AL METODO RECURSIVO
+	
 	@Override
 	public boolean buscar(String id) {
-		return false;
+	
+		return buscarRecursivo(id, (Cliente) primerCliente);
+		
 	}
 	
 	// ---------------------------------------------------------------------------------------
+	
+	// METODO RECURSIVO PARA BUSCAR CLIENTE
+	
+	private boolean buscarRecursivo(String id, Cliente nodo) {
+		
+		if(nodo == null) {
+			
+			return false;
+			
+		} else if(nodo.getId().equalsIgnoreCase(id)) {
+			
+			return true;
+			
+		} else {
+			
+			return buscarRecursivo(id, (Cliente) nodo.getSiguiente());
+			
+		}
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO PRINCIPAL DE BUSCAR EMPLEADO QUE HACE EL LLAMADO AL METODO RECURSIVO
+	
+	public boolean buscarEmpleado(String id) {
+		
+		return buscarEmpleadoRecursivo(id, (Empleado) primerEmpleado);
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO RECURSIVO PARA BUSCAR EMPLEADO
+	
+	private boolean buscarEmpleadoRecursivo(String id, Empleado nodo) {
+		
+		if(nodo == null) {
+			
+			return false;
+			
+		} else if(nodo.getId().equalsIgnoreCase(id)) {
+			
+			return true;
+			
+		} else {
+			
+			return buscarEmpleadoRecursivo(id, (Empleado) nodo.getSiguiente());
+			
+		}
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO BUSCAR CLIENTE QUE RETORNA EL CLIENTE O UN NULL EN EL CASO QUE NO EXISTA
+	
+	public Cliente buscarClienteCliente(String id) {
+		
+		if(primerCliente != null) {
+			
+			Cliente temporal = (Cliente) primerCliente;
+			
+			while(temporal != null) {
+				
+				if(temporal.getId().equalsIgnoreCase(id)) {
+					
+					return temporal;
+					
+				}
+				
+				temporal = (Cliente) temporal.getSiguiente();
+				
+			}
+			
+		}
+		
+		return null;
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO BUSCAR EMPLEADO QUE RETORNA EL CLIENTE O UN NULL EN EL CASO QUE NO EXISTA
+	
+	public Empleado buscarEmpleadoEmpleado(String id) {
+		
+		if(primerCliente != null) {
+			
+			Empleado temporal = (Empleado) primerEmpleado;
+			
+			while(temporal != null) {
+				
+				if(temporal.getId().equalsIgnoreCase(id)) {
+					
+					return temporal;
+					
+				}
+				
+				temporal = (Empleado) temporal.getSiguiente();
+				
+			}
+			
+		}
+		
+		return null;
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO PRINCIPAL PARA ELIMINAR UN CLIENTE QUE HACE EL LLAMADO AL METODO RECURSIVO
 	
 	@Override
-	public boolean eliminar(String id) {
-		return false;
+	public boolean eliminar(String id) throws NoExisteInformacionExcepcion {
+
+		return eliminarRecursivoCliente(id, (Cliente) primerCliente, null);
+		
 	}
 	
 	// ---------------------------------------------------------------------------------------
 	
-	// ---------------------------------------------------------------------------------------
+	// METODO RECURSIVO PARA ELIMINAR UN CLIENTE
+	
+	private boolean eliminarRecursivoCliente(String id, Cliente nodo, Cliente anterior) throws NoExisteInformacionExcepcion {
+		
+		if(nodo == null) {
+			
+			throw new NoExisteInformacionExcepcion("LA INFORMACION BUSCADA NO EXISTE EN EL PROGRAMA");
+			
+		} else if(nodo.getId().equalsIgnoreCase(id)) {
+			
+			if(anterior == null) {
+				
+				primerCliente = primerCliente.getSiguiente();
+				
+				nodo.setSiguiente(null);
+				
+				nodo = (Cliente) primerCliente;
+				
+				return true;
+				
+			} else {
+				
+				anterior.setSiguiente(nodo.getSiguiente());
+				
+				nodo.setSiguiente(null);
+				
+				nodo = (Cliente) anterior.getSiguiente();
+				
+				return true;
+				
+			}
+			
+		} else {
+			
+			anterior = nodo;
+			
+			return eliminarRecursivoCliente(id, (Cliente) nodo.getSiguiente(), anterior);
+			
+		}
+		
+	}
 	
 	// ---------------------------------------------------------------------------------------
+	
+	// METODO PRINCIPAL PARA ELIMINAR UN EMPLEADO QUE HACE EL LLAMADO AL METODO RECURSIVO
+	
+	public boolean eliminarEmpleado(String id) throws NoExisteInformacionExcepcion {
+		
+		return eliminarEmpleadoRecursivo(id, (Empleado) primerEmpleado, null);
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO RECURSIVO PARA ELIMINAR UN EMPLEADO
+	
+	private boolean eliminarEmpleadoRecursivo(String id, Empleado nodo, Empleado anterior) throws NoExisteInformacionExcepcion {
+		
+		if(nodo == null) {
+			
+			throw new NoExisteInformacionExcepcion("LA INFORMACION BUSCADA NO EXISTE EN EL PROGRAMA");
+			
+		} else if(nodo.getId().equalsIgnoreCase(id)) {
+			
+			if(anterior == null) {
+				
+				primerEmpleado = primerEmpleado.getSiguiente();
+				
+				nodo.setSiguiente(null);
+				
+				nodo = (Empleado) primerEmpleado;
+				
+				return true;
+				
+			} else {
+				
+				anterior.setSiguiente(nodo.getSiguiente());
+				
+				nodo.setSiguiente(null);
+				
+				nodo = (Empleado) anterior.getSiguiente();
+				
+				return true;
+				
+			}
+			
+		} else {
+			
+			anterior = nodo;
+			
+			return eliminarEmpleadoRecursivo(id, (Empleado) nodo.getSiguiente(), anterior);
+			
+		}
+		
+	}
 	
 	// ---------------------------------------------------------------------------------------
 	

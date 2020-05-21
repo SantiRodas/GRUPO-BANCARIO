@@ -9,9 +9,9 @@
 package test;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
-
+import excepciones.InformacionExisteExcepcion;
+import excepciones.NoExisteInformacionExcepcion;
 import modelo.Controladora;
 
 class ControladoraTest {
@@ -36,7 +36,7 @@ class ControladoraTest {
 	
 	// ESCENARIO NUMERO 2
 	
-	public void setup2() {
+	public void setup2() throws InformacionExisteExcepcion {
 		
 		setup1();
 		
@@ -55,7 +55,7 @@ class ControladoraTest {
 	// TEST 1 PARA AGREGAR UN BANCO A LA LISTA ENLAZADA 
 
 	@Test
-	public void agregarTest1() {
+	public void agregarTest1() throws InformacionExisteExcepcion {
 		
 		setup2();
 		
@@ -68,7 +68,7 @@ class ControladoraTest {
 	// TEST 2 PARA AGREGAR UN BANCO A LA LISTA ENLAZADA 
 	
 	@Test
-	public void agregarTest2() {
+	public void agregarTest2() throws InformacionExisteExcepcion {
 		
 		setup2();
 		
@@ -81,7 +81,7 @@ class ControladoraTest {
 	// TEST 3 PARA AGREGAR UN BANCO A LA LISTA ENLAZADA 
 	
 	@Test
-	public void agregarTest3() {
+	public void agregarTest3() throws InformacionExisteExcepcion {
 		
 		setup2();
 		
@@ -94,7 +94,7 @@ class ControladoraTest {
 	// TEST 4 PARA AGREGAR UN BANCO A LA LISTA ENLAZADA 
 	
 	@Test
-	public void agregarTest4() {
+	public void agregarTest4() throws InformacionExisteExcepcion {
 		
 		setup2();
 		
@@ -107,11 +107,11 @@ class ControladoraTest {
 	// TEST 5 PARA AGREGAR UN BANCO A LA LISTA ENLAZADA 
 	
 	@Test
-	public void agregarTest5() {
+	public void agregarTest5() throws InformacionExisteExcepcion {
 		
 		setup2();
 		
-		assertEquals("860035827", controladora.getPrimerBanco().getSiguiente().getSiguiente().getSiguiente().getId());
+		assertNull(controladora.getPrimerBanco().getAnterior());
 		
 	}
 	
@@ -120,7 +120,7 @@ class ControladoraTest {
 	// TEST 1 PARA BUSCAR UN BANCO EN LA LISTA ENLAZADA
 	
 	@Test
-	public void buscarBooleanoTest1() {
+	public void buscarBooleanoTest1() throws InformacionExisteExcepcion {
 		
 		setup2();
 		
@@ -133,7 +133,7 @@ class ControladoraTest {
 	// TEST 2 PARA BUSCAR UN BANCO EN LA LISTA ENLAZADA
 	
 	@Test
-	public void buscarBooleanoTest2() {
+	public void buscarBooleanoTest2() throws InformacionExisteExcepcion {
 		
 		setup2();
 		
@@ -146,7 +146,7 @@ class ControladoraTest {
 	// TEST 3 PARA BUSCAR UN BANCO EN LA LISTA ENLAZADA
 	
 	@Test
-	public void buscarBooleanoTest3() {
+	public void buscarBooleanoTest3() throws InformacionExisteExcepcion {
 		
 		setup2();
 		
@@ -159,7 +159,7 @@ class ControladoraTest {
 	// TEST 4 PARA BUSCAR UN BANCO EN LA LISTA ENLAZADA
 	
 	@Test
-	public void buscarBooleanoTest4() {
+	public void buscarBooleanoTest4() throws InformacionExisteExcepcion {
 		
 		setup2();
 		
@@ -172,7 +172,7 @@ class ControladoraTest {
 	// TEST 5 PARA BUSCAR UN BANCO EN LA LISTA ENLAZADA
 	
 	@Test
-	public void buscarBooleanoTest5() {
+	public void buscarBooleanoTest5() throws InformacionExisteExcepcion {
 		
 		setup2();
 		
@@ -185,7 +185,7 @@ class ControladoraTest {
 	// TEST 1 PARA BUSCAR UN BANCO EN LA LISTA ENLAZADA RETORNANDO EL OBJETO BUSCADO
 	
 	@Test
-	public void buscarBancoTest1() {
+	public void buscarBancoTest1() throws InformacionExisteExcepcion {
 		
 		setup2();
 		
@@ -198,7 +198,7 @@ class ControladoraTest {
 	// TEST 2 PARA BUSCAR UN BANCO EN LA LISTA ENLAZADA RETORNANDO EL OBJETO BUSCADO
 	
 	@Test
-	public void buscarBancoTest2() {
+	public void buscarBancoTest2() throws InformacionExisteExcepcion {
 		
 		setup2();
 		
@@ -211,7 +211,7 @@ class ControladoraTest {
 	// TEST 3 PARA BUSCAR UN BANCO EN LA LISTA ENLAZADA RETORNANDO EL OBJETO BUSCADO
 	
 	@Test
-	public void buscarBancoTest3() {
+	public void buscarBancoTest3() throws InformacionExisteExcepcion {
 		
 		setup2();
 		
@@ -224,7 +224,7 @@ class ControladoraTest {
 	// TEST 4 PARA BUSCAR UN BANCO EN LA LISTA ENLAZADA RETORNANDO EL OBJETO BUSCADO
 	
 	@Test
-	public void buscarBancoTest4() {
+	public void buscarBancoTest4() throws InformacionExisteExcepcion {
 		
 		setup2();
 		
@@ -237,7 +237,7 @@ class ControladoraTest {
 	// TEST 5 PARA BUSCAR UN BANCO EN LA LISTA ENLAZADA RETORNANDO EL OBJETO BUSCADO
 	
 	@Test
-	public void buscarBancoTest5() {
+	public void buscarBancoTest5() throws InformacionExisteExcepcion {
 		
 		setup2();
 		
@@ -250,7 +250,7 @@ class ControladoraTest {
 	// TEST 1 PARA ELIMINAR UN BANCO DE LA LISTA ENLAZADA RETORNANDO BOOLEAN
 	
 	@Test
-	public void eliminarTest1() {
+	public void eliminarTest1() throws InformacionExisteExcepcion, NoExisteInformacionExcepcion {
 		
 		setup2();
 		
@@ -265,7 +265,7 @@ class ControladoraTest {
 	// TEST 2 PARA ELIMINAR UN BANCO DE LA LISTA ENLAZADA RETORNANDO BOOLEAN
 	
 	@Test
-	public void eliminarTest2() {
+	public void eliminarTest2() throws InformacionExisteExcepcion, NoExisteInformacionExcepcion {
 		
 		setup2();
 		
@@ -280,7 +280,7 @@ class ControladoraTest {
 	// TEST 3 PARA ELIMINAR UN BANCO DE LA LISTA ENLAZADA RETORNANDO BOOLEAN
 	
 	@Test
-	public void eliminarTest3() {
+	public void eliminarTest3() throws InformacionExisteExcepcion, NoExisteInformacionExcepcion {
 		
 		setup1();
 		
@@ -297,7 +297,7 @@ class ControladoraTest {
 	// TEST 4 PARA ELIMINAR UN BANCO DE LA LISTA ENLAZADA RETORNANDO BOOLEAN
 	
 	@Test
-	public void eliminarTest4() {
+	public void eliminarTest4() throws InformacionExisteExcepcion, NoExisteInformacionExcepcion {
 		
 		setup2();
 		
@@ -310,7 +310,7 @@ class ControladoraTest {
 	// TEST 5 PARA ELIMINAR UN BANCO DE LA LISTA ENLAZADA RETORNANDO BOOLEAN
 	
 	@Test
-	public void eliminarTest5() {
+	public void eliminarTest5() throws InformacionExisteExcepcion, NoExisteInformacionExcepcion {
 		
 		setup1();
 		

@@ -8,6 +8,9 @@
 
 package modelo;
 
+import excepciones.InformacionExisteExcepcion;
+import excepciones.NoExisteInformacionExcepcion;
+
 public class Banco implements General {
 	
 	// ---------------------------------------------------------------------------------------
@@ -114,22 +117,30 @@ public class Banco implements General {
 	
 	// METODO PRINCIPAL DE AGREGAR QUE HACE EL LLAMADO AL METODO RECURSIVO
 	
-	public Sucursal agregar(String nombre, String id, String direccion, String estratoEconomico, String email) {
+	public Sucursal agregar(String nombre, String id, String direccion, String estratoEconomico, String email) throws InformacionExisteExcepcion {
 		
-		Sucursal lugar = new Sucursal(nombre, id, direccion, estratoEconomico, email);
-		
-		if(root == null) {
+		if(buscar(id) == true ) {
 			
-			root = lugar;
+			throw new InformacionExisteExcepcion("LA INFORMACION QUE DESEA AGREGAR YA EXISTE EN EL PROGRAMA");
 			
 		} else {
 			
-			return (Sucursal) agregarRecursivo((Sucursal) root, lugar);
+			Sucursal lugar = new Sucursal(nombre, id, direccion, estratoEconomico, email);
+			
+			if(root == null) {
+				
+				root = lugar;
+				
+			} else {
+				
+				return (Sucursal) agregarRecursivo((Sucursal) root, lugar);
+				
+			}
+			
+			return (Sucursal) root;
 			
 		}
-		
-		return (Sucursal) root;
-		
+	
 	}
 	
 	// ---------------------------------------------------------------------------------------
@@ -242,7 +253,7 @@ public class Banco implements General {
 	// METODO PARA ELIMINAR PRINCIPAL QUE HACE EL LLAMADO AL METODO RECURSIVO (RETORNA BOOLEAN)
 
 	@Override
-	public boolean eliminar(String id) {
+	public boolean eliminar(String id) throws NoExisteInformacionExcepcion {
 		
 		if(buscar(id) == true) {
 			
@@ -252,7 +263,7 @@ public class Banco implements General {
 			
 		} else {
 			
-			return true;
+			throw new NoExisteInformacionExcepcion("LA INFORMACION BUSCADA NO EXISTE EN EL PROGRAMA");
 			
 		}
 		

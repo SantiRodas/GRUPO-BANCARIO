@@ -12,6 +12,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import excepciones.InformacionExisteExcepcion;
+import excepciones.NoExisteInformacionExcepcion;
 import modelo.Banco;
 
 class BancoTest {
@@ -36,7 +38,7 @@ class BancoTest {
 	
 	// ESCENARIO NUMERO 2
 	
-	public void setup2() {
+	public void setup2() throws InformacionExisteExcepcion {
 		
 		setup1();
 		
@@ -57,7 +59,7 @@ class BancoTest {
 	// TEST 1 PARA AGREGAR UN LUGAR AL ARBOL BINARIO 
 
 	@Test
-	public void agregarTest1() {
+	public void agregarTest1() throws InformacionExisteExcepcion {
 		
 		setup2();
 		
@@ -70,7 +72,7 @@ class BancoTest {
 	// TEST 2 PARA AGREGAR UN LUGAR AL ARBOL BINARIO 
 	
 	@Test
-	public void agregarTest2() {
+	public void agregarTest2() throws InformacionExisteExcepcion {
 		
 		setup2();
 		
@@ -83,7 +85,7 @@ class BancoTest {
 	// TEST 3 PARA AGREGAR UN LUGAR AL ARBOL BINARIO 
 	
 	@Test
-	public void agregarTest3() {
+	public void agregarTest3() throws InformacionExisteExcepcion {
 		
 		setup2();
 		
@@ -96,7 +98,7 @@ class BancoTest {
 	// TEST 4 PARA AGREGAR UN LUGAR AL ARBOL BINARIO 
 	
 	@Test
-	public void agregarTest4() {
+	public void agregarTest4() throws InformacionExisteExcepcion {
 		
 		setup2();
 		
@@ -109,7 +111,7 @@ class BancoTest {
 	// TEST 5 PARA AGREGAR UN LUGAR AL ARBOL BINARIO 
 	
 	@Test
-	public void agregarTest5() {
+	public void agregarTest5() throws InformacionExisteExcepcion {
 		
 		setup2();
 		
@@ -122,7 +124,7 @@ class BancoTest {
 	// TEST 1 PARA BUSCAR UN LUGAR EN EL ARBOL BINARIO
 	
 	@Test
-	public void buscarBooleanTest1() {
+	public void buscarBooleanTest1() throws InformacionExisteExcepcion {
 		
 		setup2();
 		
@@ -135,7 +137,7 @@ class BancoTest {
 	// TEST 2 PARA BUSCAR UN LUGAR EN EL ARBOL BINARIO
 	
 	@Test
-	public void buscarBooleanTest2() {
+	public void buscarBooleanTest2() throws InformacionExisteExcepcion {
 		
 		setup2();
 		
@@ -148,7 +150,7 @@ class BancoTest {
 	// TEST 3 PARA BUSCAR UN LUGAR EN EL ARBOL BINARIO
 	
 	@Test
-	public void buscarBooleanTest3() {
+	public void buscarBooleanTest3() throws InformacionExisteExcepcion {
 		
 		setup2();
 		
@@ -161,7 +163,7 @@ class BancoTest {
 	// TEST 4 PARA BUSCAR UN LUGAR EN EL ARBOL BINARIO
 	
 	@Test
-	public void buscarBooleanTest4() {
+	public void buscarBooleanTest4() throws InformacionExisteExcepcion {
 		
 		setup2();
 		
@@ -174,7 +176,7 @@ class BancoTest {
 	// TEST 5 PARA BUSCAR UN LUGAR EN EL ARBOL BINARIO
 	
 	@Test
-	public void buscarBooleanTest5() {
+	public void buscarBooleanTest5() throws InformacionExisteExcepcion {
 		
 		setup2();
 		
@@ -187,7 +189,7 @@ class BancoTest {
 	// TEST 1 PARA BUSCAR UN LUGAR EN EL ARBOL BINARIO RETORNANDO EL OBJETO BUSCADO
 	
 	@Test
-	public void buscarBancoTest1() {
+	public void buscarBancoTest1() throws InformacionExisteExcepcion {
 		
 		setup2();
 		
@@ -200,7 +202,7 @@ class BancoTest {
 	// TEST 2 PARA BUSCAR UN LUGAR EN EL ARBOL BINARIO RETORNANDO EL OBJETO BUSCADO
 	
 	@Test
-	public void buscarBancoTest2() {
+	public void buscarBancoTest2() throws InformacionExisteExcepcion {
 		
 		setup2();
 		
@@ -213,7 +215,7 @@ class BancoTest {
 	// TEST 3 PARA BUSCAR UN LUGAR EN EL ARBOL BINARIO RETORNANDO EL OBJETO BUSCADO
 	
 	@Test
-	public void buscarBancoTest3() {
+	public void buscarBancoTest3() throws InformacionExisteExcepcion {
 		
 		setup2();
 		
@@ -226,7 +228,7 @@ class BancoTest {
 	// TEST 4 PARA BUSCAR UN LUGAR EN EL ARBOL BINARIO RETORNANDO EL OBJETO BUSCADO
 	
 	@Test
-	public void buscarBancoTest4() {
+	public void buscarBancoTest4() throws InformacionExisteExcepcion {
 		
 		setup2();
 		
@@ -239,7 +241,7 @@ class BancoTest {
 	// TEST 5 PARA BUSCAR UN LUGAR EN EL ARBOL BINARIO RETORNANDO EL OBJETO BUSCADO
 	
 	@Test
-	public void buscarBancoTest5() {
+	public void buscarBancoTest5() throws InformacionExisteExcepcion {
 		
 		setup2();
 		
@@ -253,7 +255,7 @@ class BancoTest {
 	// TEST 1 PARA ELIMINAR UN LUGAR DEL ABB RETORNANDO BOOLEAN
 	
 	@Test
-	public void eliminarTest1() {
+	public void eliminarTest1() throws InformacionExisteExcepcion, NoExisteInformacionExcepcion {
 		
 		setup2();
 		
@@ -268,7 +270,7 @@ class BancoTest {
 	// TEST 2 PARA ELIMINAR UN LUGAR DEL ABB RETORNANDO BOOLEAN
 	
 	@Test
-	public void eliminarTest2() {
+	public void eliminarTest2() throws InformacionExisteExcepcion, NoExisteInformacionExcepcion {
 		
 		setup2();
 		
@@ -283,7 +285,7 @@ class BancoTest {
 	// TEST 3 PARA ELIMINAR UN LUGAR DEL ABB RETORNANDO BOOLEAN
 	
 	@Test
-	public void eliminarTest3() {
+	public void eliminarTest3() throws InformacionExisteExcepcion, NoExisteInformacionExcepcion {
 		
 		setup1();
 		
@@ -302,7 +304,7 @@ class BancoTest {
 	// TEST 4 PARA ELIMINAR UN LUGAR DEL ABB RETORNANDO BOOLEAN
 	
 	@Test
-	public void eliminarTest4() {
+	public void eliminarTest4() throws InformacionExisteExcepcion, NoExisteInformacionExcepcion {
 		
 		setup2();
 		
@@ -319,10 +321,10 @@ class BancoTest {
 	// TEST 5 PARA ELIMINAR UN LUGAR DEL ABB RETORNANDO BOOLEAN
 	
 	@Test
-	public void eliminarTest5() {
+	public void eliminarTest5() throws InformacionExisteExcepcion, NoExisteInformacionExcepcion {
 		
 		setup2();
-
+		
 		banco.eliminar("12345");
 		
 		banco.eliminar("45612");
@@ -334,7 +336,7 @@ class BancoTest {
 		assertFalse(banco.buscar("45612"));
 		
 		assertFalse(banco.buscar("74158"));
-		
+				
 	}
 	
 	// ---------------------------------------------------------------------------------------
