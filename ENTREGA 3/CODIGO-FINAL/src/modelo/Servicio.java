@@ -10,7 +10,10 @@ package modelo;
 
 import java.util.ArrayList;
 
-public class Servicio {
+import excepciones.InformacionExisteExcepcion;
+import excepciones.NoExisteInformacionExcepcion;
+
+public class Servicio implements General {
 	
 	// ---------------------------------------------------------------------------------------
 	
@@ -25,6 +28,10 @@ public class Servicio {
 	
 	private Servicio izquierda;
 	private Servicio derecha;
+	
+	// RELACION PAPA CON LA CLASE SERVICIO
+	
+	private Servicio papa;
 	
 	// ******************************************
 	
@@ -43,6 +50,8 @@ public class Servicio {
 		
 		izquierda = null;
 		derecha = null;
+		
+		papa = null;
 		
 		cuentas = new ArrayList<Cuenta>();
 		
@@ -72,6 +81,12 @@ public class Servicio {
 		return derecha;
 	}
 	
+	// METODO GET DE LA RELACION PAPA
+	
+	public Servicio getPapa() {
+		return papa;
+	}
+	
 	// ******************************************
 	
 	// METODO GET DE LA RELACION TIPO ARRAYLIST CON LA CLASE CUENTA
@@ -79,7 +94,7 @@ public class Servicio {
 	public ArrayList<Cuenta> getCuentas() {
 		return cuentas;
 	}
-	
+
 	// ---------------------------------------------------------------------------------------
 	
 	// METODOS SET DE LA CLASE SERVICIO
@@ -103,6 +118,12 @@ public class Servicio {
 	public void setDerecha(Servicio derecha) {
 		this.derecha = derecha;
 	}
+	
+	// METODO SET DE LA RELACION PAPA
+	
+	public void setPapa(Servicio papa) {
+		this.papa = papa;
+	}
 
 	// ******************************************
 	
@@ -113,7 +134,89 @@ public class Servicio {
 	}
 	
 	// ---------------------------------------------------------------------------------------
-
 	
+	// METODO PARA AGREGAR UNA CUENTA AL SERVICIO
+	
+	public void agregarCuenta(String id, int valor) throws InformacionExisteExcepcion {
+		
+		if(buscar(id) == true) {
+			
+			throw new InformacionExisteExcepcion("LA INFORMACION QUE DESEA AGREGAR YA EXISTE EN EL PROGRAMA");
+			
+		} else {
+			
+			Cuenta cuenta = new Cuenta(id, valor);
+			
+			cuentas.add(cuenta);
+			
+		}
+		
+	}
+
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO PARA BUSCAR UNA CUENTA EN EL SERVICIO (RETORNA UN BOOLEAN)
+	
+	@Override
+	public boolean buscar(String id) {
+		
+		for(int i = 0 ; i < cuentas.size() ; i ++) {
+			
+			if(cuentas.get(i).getId().equalsIgnoreCase(id)) {
+				
+				return true;
+				
+			}
+			
+		}
+		
+		return false;
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO PARA BUSCAR UNA CUENTA EN EL SERVICIO (RETORNA LA CUENTA)
+	
+	public Cuenta buscarCuentaCuenta(String id) {
+		
+		for(int i = 0 ; i < cuentas.size() ; i++) {
+			
+			if(cuentas.get(i).getId().equalsIgnoreCase(id)) {
+				
+				return cuentas.get(i);
+				
+			}
+			
+		}
+		
+		return null;
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO PARA ELIMINAR UNA CUENTA DEL SERVICIO (RETORNA UN BOOLEAN O UNA EXCEPCION)
+
+	@Override
+	public boolean eliminar(String id) throws NoExisteInformacionExcepcion {
+		
+		for(int i = 0 ; i < cuentas.size() ; i ++) {
+			
+			if(cuentas.get(i).getId().equalsIgnoreCase(id)) {
+				
+				cuentas.remove(i);
+				
+				return true;
+				
+			}
+			
+		}
+		
+		throw new NoExisteInformacionExcepcion("LA INFORMACION BUSCADA NO EXISTE EN EL PROGRAMA");
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
 	
 }

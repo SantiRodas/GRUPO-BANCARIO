@@ -10,7 +10,10 @@ package modelo;
 
 import java.util.ArrayList;
 
-public class Persona {
+import excepciones.InformacionExisteExcepcion;
+import excepciones.NoExisteInformacionExcepcion;
+
+public class Persona implements General {
 	
 	// ---------------------------------------------------------------------------------------
 	
@@ -190,6 +193,326 @@ public class Persona {
 		this.seguros = seguros;
 	}
 	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO PRINCIPAL AGREGAR QUE HACE EL LLAMADO AL METODO RECURSIVO
+	
+	public Servicio agregarServicio(String nombre, int valor) throws InformacionExisteExcepcion{
+		
+		if(buscar(nombre) == true ) {
+			
+			throw new InformacionExisteExcepcion("LA INFORMACION QUE DESEA AGREGAR YA EXISTE EN EL PROGRAMA");
+			
+		} else {
+			
+			Servicio nuevo = new Servicio(nombre, valor);
+			
+			if(root == null) {
+				
+				root = nuevo;
+				
+			} else {
+				
+				return agregarServicioRecursivo(root, nuevo);
+				
+			}
+			
+			return root;
+			
+		}
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO RECURSIVO PARA AGREGAR UN SERVICIO
+	
+	private Servicio agregarServicioRecursivo(Servicio primero, Servicio nuevo) {
+		
+		if(nuevo.getNombre().compareTo(primero.getNombre()) >= 0) {
+			
+			if(primero.getDerecha() == null) {
+				
+				primero.setDerecha(nuevo);
+				
+			} else {
+				
+				return agregarServicioRecursivo(primero.getDerecha(), nuevo);
+				
+			}
+			
+		} else {
+			
+			if(primero.getIzquierda() == null) {
+				
+				primero.setIzquierda(nuevo);
+				
+				nuevo.setPapa(primero);
+				
+			} else {
+				
+				return agregarServicioRecursivo(primero.getIzquierda(), nuevo);
+				
+			}
+			
+		}
+		
+		return nuevo;
+	
+	}
+	
 	// ---------------------------------------------------------------------------------------	
+	
+	// METODO PRINCIPAL DE BUSQUEDA QUE HACE EL LLAMADO AL METODO RECURSIVO
+	
+	@Override
+	public boolean buscar(String nombre) {
+
+		return buscarRecursivo(nombre, root);
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO RECURSIVO DE BUSQUEDA
+	
+	private boolean buscarRecursivo(String nombre, Servicio nodo) {
+		
+		if(nodo == null) {
+			
+			return false;
+			
+		} else if(nodo.getNombre().equalsIgnoreCase(nombre)) {
+			
+			return true;
+			
+		} else if(nombre.compareTo(nodo.getNombre()) <= 0) {
+			
+			return buscarRecursivo(nombre, nodo.getIzquierda());
+			
+		} else {
+			
+			return buscarRecursivo(nombre, nodo.getDerecha());
+			
+		}
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO PARA BUSCAR UN SERVICIO QUE RETORNA EL SERVICIO O NULL
+	
+	public Servicio buscarServicio(String nombre) {
+		
+		Servicio temporal = root;
+		
+		while(temporal != null) {
+			
+			if(temporal.getNombre().equalsIgnoreCase(nombre)) {
+				
+				return temporal;
+				
+			} else if(id.compareTo(temporal.getNombre()) <= 0) {
+				
+				temporal =temporal.getIzquierda();
+				
+			} else {
+				
+				temporal = temporal.getDerecha();
+				
+			}
+			
+		}
+		
+		return null;
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO PRINCIPAL PARA ELIMINAR SERVICIO QUE HACE UN LLAMADO AL METODO RECURSIVO
+
+	@Override
+	public boolean eliminar(String nombre) throws NoExisteInformacionExcepcion {
+		
+		if(buscar(nombre) == true) {
+			
+			root = eliminarRecursivo(root, nombre);
+			
+			return true;
+			
+		} else {
+			
+			throw new NoExisteInformacionExcepcion("LA INFORMACION BUSCADA NO EXISTE EN EL PROGRAMA");
+			
+		}
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO RECURSIVO QUE ELIMINA EL SERVICIO
+	
+	private Servicio eliminarRecursivo(Servicio nodo, String nombre) {
+		
+		if(root == null) {
+			
+			return null;
+			
+		}
+		
+		if(nodo.getNombre().equalsIgnoreCase(nombre)) {
+			
+			return unir(nodo.getIzquierda(), nodo.getDerecha());
+			
+		}
+		
+		if(nombre.compareTo(nodo.getNombre()) <= 0) {
+			
+			nodo.getIzquierda();
+			
+			return eliminarRecursivo(nodo.getIzquierda(), nombre);
+			
+		} else {
+			
+			nodo.getDerecha();
+			
+			return eliminarRecursivo(nodo.getDerecha(), nombre);
+			
+		}
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO EXTRA PARA UNIR (SE UTILIZA EN EL METODO RECURSIVO)
+	
+	private Servicio unir(Servicio izquierda, Servicio derecha) {
+		
+		if(izquierda == null) {
+			
+			return derecha;
+			
+		}
+		
+		if(derecha == null) {
+			
+			return izquierda;
+			
+		}
+		
+		Servicio centro = unir(izquierda.getDerecha(), derecha.getIzquierda());
+		
+		izquierda.setDerecha(centro);
+		
+		derecha.setIzquierda(izquierda);
+		
+		return derecha;
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO PARA AGREGAR UN BENEFICIO (PROMOCION) AL ARRAYLIST DE BENEFICIOS
+	
+	public void agregarBeneficioPromocion(String nombre, String id, String contrasena, int valor) throws InformacionExisteExcepcion {
+		
+		if(buscarBeneficio(id) == true) {
+			
+			throw new InformacionExisteExcepcion("LA INFORMACION QUE DESEA AGREGAR YA EXISTE EN EL PROGRAMA");
+			
+		} else {
+			
+			Promocion promocion = new Promocion(nombre, id, contrasena, valor);
+			
+			beneficios.add(promocion);
+			
+		}
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO PARA AGREGAR UN BENEFICIO (DESCUENTO) AL ARRAYLIST DE BENEFICIOS
+	
+	public void agregarBeneficioDescuento(String nombre, String id, String contrasena, int valor) throws InformacionExisteExcepcion {
+		
+		if(buscarBeneficio(id) == true) {
+			
+			throw new InformacionExisteExcepcion("LA INFORMACION QUE DESEA AGREGAR YA EXISTE EN EL PROGRAMA");
+			
+		} else {
+			
+			Descuento descuento = new Descuento(nombre, id, contrasena, valor);
+			
+			beneficios.add(descuento);
+			
+		}
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO PARA BUSCAR UN BENEFICIO
+	
+	public boolean buscarBeneficio(String id) {
+		
+		for(int i = 0 ; i < beneficios.size() ; i ++) {
+			
+			if(beneficios.get(i).getId().equalsIgnoreCase(id)) {
+				
+				return true;
+				
+			}
+			
+		}
+		
+		return false;
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO PARA BUSCAR UN BENEFICIO RETORNANDO EL BENEFICIO
+	
+	public Beneficio buscarBeneficioBeneficio(String id) {
+		
+		for(int i = 0 ; i < beneficios.size() ; i++) {
+			
+			if(beneficios.get(i).getId().equalsIgnoreCase(id)) {
+				
+				return beneficios.get(i);
+				
+			}
+			
+		}
+		
+		return null;
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO PARA ELIMINAR UN BENEFICIO 
+	
+	public boolean eliminarBeneficio(String id) throws NoExisteInformacionExcepcion {
+		
+		for(int i = 0 ; i < beneficios.size() ; i ++) {
+			
+			if(beneficios.get(i).getId().equalsIgnoreCase(id)) {
+				
+				beneficios.remove(i);
+				
+				return true;
+				
+			}
+			
+		}
+		
+		throw new NoExisteInformacionExcepcion("LA INFORMACION BUSCADA NO EXISTE EN EL PROGRAMA");
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
 	
 }

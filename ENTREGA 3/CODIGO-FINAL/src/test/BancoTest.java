@@ -9,9 +9,7 @@
 package test;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
-
 import excepciones.InformacionExisteExcepcion;
 import excepciones.NoExisteInformacionExcepcion;
 import modelo.Banco;
@@ -23,6 +21,66 @@ class BancoTest {
 	// RELACION CON LA CLASE BANCO
 	
 	Banco banco;
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO EXTRA PARA QUE EL TEST SE VEA MUCHO MAS LINDO
+	
+	
+	//****************************************************************************
+	//POR FAVOR TENER ABIERTA LA VENTANA CONSOLA PARA VER EL DISEÑO EXTRA DEL TEST
+	//****************************************************************************
+	
+	@Test
+	public void lindo() throws InterruptedException {
+		
+		String mensaje = "";
+		
+		String mensaje2 = "";
+		
+		System.out.println("");
+		System.out.println("Realizando diagnostico del sistema");
+		System.out.println("");
+		
+		for(int i = 0 ; i < 5 ; i ++) {
+			
+			mensaje += "**";
+			
+			Thread.sleep(1000);
+			
+			System.out.println(mensaje);
+			
+		}
+		
+		System.out.println("");
+		System.out.println("Iniciando simulacion");
+		System.out.println("");
+		
+		for(int y = 0 ; y < 5 ; y ++) {
+			
+			mensaje2 += "**";
+			
+			Thread.sleep(1000);
+			
+			System.out.println(mensaje2);
+			
+		}
+		
+		System.out.println("");
+		
+		System.out.println("------------------");
+		System.out.println("Escaneo completado");
+		System.out.println("------------------");
+		
+		Thread.sleep(3000);
+		
+		System.out.println("");
+		
+		System.out.println("---------------");
+		System.out.println("Sistemas listos");
+		System.out.println("---------------");
+		
+	}
 	
 	// ---------------------------------------------------------------------------------------
 	

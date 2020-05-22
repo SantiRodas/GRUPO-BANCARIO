@@ -16,7 +16,7 @@ public interface General {
 	
 	// METODO COMPARTIDO PARA BUSCAR
 	
-	public boolean buscar(String id) throws NoExisteInformacionExcepcion;
+	public boolean buscar(String id);
 	
 	// ******************************************
 	
