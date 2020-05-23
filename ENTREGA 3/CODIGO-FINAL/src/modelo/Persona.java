@@ -496,12 +496,70 @@ public class Persona implements General {
 	// METODO PARA ELIMINAR UN BENEFICIO 
 	
 	public boolean eliminarBeneficio(String id) throws NoExisteInformacionExcepcion {
-		
-		for(int i = 0 ; i < beneficios.size() ; i ++) {
+
+		if(buscarBeneficio(id) == true) {
 			
-			if(beneficios.get(i).getId().equalsIgnoreCase(id)) {
-				
-				beneficios.remove(i);
+			beneficios.remove(buscarBeneficioBeneficio(id));
+			
+			return true;
+			
+		} else {
+			
+			throw new NoExisteInformacionExcepcion("LA INFORMACION BUSCADA NO EXISTE EN EL PROGRAMA");
+			
+		}
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO PARA AGREGAR SEGURO DE TIPO SALUD
+	
+	public void agregarSalud(String nombre, String id, String direccion, String estratoEconomico, String email) throws InformacionExisteExcepcion {
+		
+		if(buscarSeguro(id) == true) {
+			
+			throw new InformacionExisteExcepcion("LA INFORMACION QUE DESEA AGREGAR YA EXISTE EN EL PROGRAMA");
+			
+		} else {
+			
+			Salud salud = new Salud(nombre, id, direccion, estratoEconomico, email);
+			
+			seguros.add(salud);
+			
+		}
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO PARA AGREGAR SEGURO DE TIPO ARL
+	
+	public void agregarArl(String nombre, String id, String direccion, String estratoEconomico, String email) throws InformacionExisteExcepcion {
+		
+		if(buscarSeguro(id) == true) {
+			
+			throw new InformacionExisteExcepcion("LA INFORMACION QUE DESEA AGREGAR YA EXISTE EN EL PROGRAMA");
+			
+		} else {
+			
+			Arl arl = new Arl(nombre, id, direccion, estratoEconomico, email);
+			
+			seguros.add(arl);
+			
+		}
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO PARA BUSCAR SEGURO RETORNA BOOLEAN
+	
+	public boolean buscarSeguro(String id) {
+		
+		for(int i = 0 ; i < seguros.size() ; i ++) {
+			
+			if(seguros.get(i).getId().equalsIgnoreCase(id)) {
 				
 				return true;
 				
@@ -509,7 +567,47 @@ public class Persona implements General {
 			
 		}
 		
-		throw new NoExisteInformacionExcepcion("LA INFORMACION BUSCADA NO EXISTE EN EL PROGRAMA");
+		return false;
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO PARA BUSCAR SEGURO RETORNA EL SEGURO
+	
+	public Seguro buscarSeguroSeguro(String id) {
+		
+		for(int i = 0 ; i < seguros.size() ; i ++){
+			
+			if(seguros.get(i).getId().equalsIgnoreCase(id)) {
+				
+				return seguros.get(i);
+				
+			}
+			
+		}
+		
+		return null;
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO PARA ELIMINAR SEGURO RETORNA BOOLEAN
+	
+	public boolean eliminarSeguro(String id) throws NoExisteInformacionExcepcion {
+
+		if(buscarSeguro(id) == true) {
+			
+			seguros.remove(buscarSeguroSeguro(id));
+			
+			return true;
+			
+		} else {
+			
+			throw new NoExisteInformacionExcepcion("LA INFORMACION BUSCADA NO EXISTE EN EL PROGRAMA");
+			
+		}
 		
 	}
 	

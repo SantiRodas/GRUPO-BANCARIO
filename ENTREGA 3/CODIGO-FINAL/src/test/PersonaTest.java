@@ -135,6 +135,29 @@ class PersonaTest {
 	
 	// ---------------------------------------------------------------------------------------
 	
+	// ESCENARIO NUMERO 4
+	
+	public void setup4() throws InformacionExisteExcepcion {
+		
+		setup1();
+		
+		persona.agregarSalud("Imbanaco", "123", "Calle 5", "4", "imbanaco@gmail.com");
+		
+		persona.agregarSalud("Sura", "456", "Calle 5 con 47", "4", "sura@gmail.com");
+		
+		persona.agregarSalud("Coomeva", "789", "Carrera 9", "3", "coomeva@gmail.com");
+		
+		
+		persona.agregarArl("Colpatria", "147", "Calle 6", "4", "colpatria@gmail.com");
+		
+		persona.agregarArl("Equidad", "258", "Kilometro 1", "3", "equidad@gmail.com");
+		
+		persona.agregarArl("Colmena", "369", "Calle 7", "3", "colmena@gmail.com");
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
 	// TEST 1 AGREGAR SERVICIO
 	
 	@Test
@@ -362,6 +385,130 @@ class PersonaTest {
 		persona.eliminarBeneficio("852");
 		
 		assertEquals(4, persona.getBeneficios().size());
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// TEST 1 PARA AGREGAR UN SEGURO DE TIPO SALUD
+	
+	public void agregarSeguroSaludTest1() throws InformacionExisteExcepcion {
+		
+		setup4();
+		
+		assertTrue(persona.getSeguros().get(0).getNombre() == "Imbanaco");
+		
+		assertEquals("456", persona.getSeguros().get(1).getId());
+		
+	}
+	
+	// ******************************************
+	
+	// TEST 2 PARA AGREGAR UN SEGURO DE TIPO ARL
+	
+	public void agregarSeguroARLTest1() throws InformacionExisteExcepcion {
+		
+		setup4();
+		
+		assertTrue(persona.getSeguros().get(3).getNombre() == "Colpatria");
+		
+		assertEquals("258", persona.getSeguros().get(4).getId());
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// TEST 1 PARA BUSCAR UN SEGURO RETORNA UN BOOLEAN
+	
+	public void buscarSeguroTest1() throws InformacionExisteExcepcion {
+		
+		setup4();
+		
+		assertTrue(persona.buscarSeguro("456"));
+		
+		assertFalse(persona.buscarSeguro("8459614586"));
+		
+	}
+	
+	// ******************************************
+	
+	// TEST 2 PARA BUSCAR UN SEGURO RETORNA UN BOOLEAN
+	
+	public void buscarSeguroTest2() throws InformacionExisteExcepcion {
+		
+		setup4();
+		
+		assertTrue(persona.buscarSeguro("147"));
+		
+		assertFalse(persona.buscarSeguro("0258465814269"));
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// TEST 1 PARA BUSCAR UN SEGURO RETORNA EL SEGURO
+	
+	public void buscarSeguroSeguroTest1() throws InformacionExisteExcepcion {
+		
+		setup4();
+		
+		assertNotNull(persona.buscarSeguroSeguro("789"));
+		
+		assertEquals("Imbanaco", persona.buscarSeguroSeguro("123").getNombre());
+		
+	}
+	
+	// ******************************************
+	
+	// TEST 1 PARA BUSCAR UN SEGURO RETORNA EL SEGURO
+	
+	public void buscarSeguroSeguroTest2() throws InformacionExisteExcepcion {
+		
+		setup4();
+		
+		assertNotNull(persona.buscarSeguroSeguro("258"));
+		
+		assertEquals("Colmena", persona.buscarSeguroSeguro("369").getNombre());
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// TEST 1 PARA ELIMINAR UN SEGURO RETORNA UN BOOLEAN
+	
+	public void eliminarSeguroTest1() throws InformacionExisteExcepcion, NoExisteInformacionExcepcion {
+		
+		setup4();
+		
+		persona.eliminarSeguro("123");
+		
+		assertEquals(5, persona.getSeguros().size());
+		
+	}
+	
+	// ******************************************
+	
+	// TEST 2 PARA ELIMINAR UN SEGURO RETORNA UN BOOLEAN
+	
+	public void eliminarSeguroTest2() throws InformacionExisteExcepcion, NoExisteInformacionExcepcion {
+		
+		setup1();
+		
+		persona.agregarSalud("Oftamologia", "753", "Carrera 78", "4", "oftamologia@gmail.com");
+		
+		persona.agregarArl("Sura Arl", "951", "Kilometro 2", "4", "suraArl@gmail.com");
+		
+		assertEquals(2, persona.getSeguros().size());
+		
+		persona.eliminarSeguro("753");
+		
+		assertEquals(1, persona.getSeguros().size());
+		
+		persona.eliminarSeguro("951");
+		
+		assertNull(persona.buscarSeguroSeguro("951"));
+		
+		assertEquals(0, persona.getSeguros().size());
 		
 	}
 	

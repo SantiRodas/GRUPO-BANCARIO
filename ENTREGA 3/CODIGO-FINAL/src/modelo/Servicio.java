@@ -200,20 +200,18 @@ public class Servicio implements General {
 
 	@Override
 	public boolean eliminar(String id) throws NoExisteInformacionExcepcion {
-		
-		for(int i = 0 ; i < cuentas.size() ; i ++) {
+
+		if(buscar(id) == true) {
 			
-			if(cuentas.get(i).getId().equalsIgnoreCase(id)) {
-				
-				cuentas.remove(i);
-				
-				return true;
-				
-			}
+			cuentas.remove(buscarCuentaCuenta(id));
+			
+			return true;
+			
+		} else {
+			
+			throw new NoExisteInformacionExcepcion("LA INFORMACION BUSCADA NO EXISTE EN EL PROGRAMA");
 			
 		}
-		
-		throw new NoExisteInformacionExcepcion("LA INFORMACION BUSCADA NO EXISTE EN EL PROGRAMA");
 		
 	}
 	
