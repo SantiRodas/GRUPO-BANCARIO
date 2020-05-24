@@ -149,6 +149,8 @@ public class Servicio implements General {
 			
 			cuentas.add(cuenta);
 			
+			burbujaValor();
+			
 		}
 		
 	}
@@ -160,6 +162,8 @@ public class Servicio implements General {
 	@Override
 	public boolean buscar(String id) {
 		
+		burbujaId();
+				
 		for(int i = 0 ; i < cuentas.size() ; i ++) {
 			
 			if(cuentas.get(i).getId().equalsIgnoreCase(id)) {
@@ -179,6 +183,8 @@ public class Servicio implements General {
 	// METODO PARA BUSCAR UNA CUENTA EN EL SERVICIO (RETORNA LA CUENTA)
 	
 	public Cuenta buscarCuentaCuenta(String id) {
+		
+		burbujaId();
 		
 		for(int i = 0 ; i < cuentas.size() ; i++) {
 			
@@ -200,6 +206,8 @@ public class Servicio implements General {
 
 	@Override
 	public boolean eliminar(String id) throws NoExisteInformacionExcepcion {
+		
+		burbujaId();
 
 		if(buscar(id) == true) {
 			
@@ -215,6 +223,62 @@ public class Servicio implements General {
 		
 	}
 	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO BURBUJA PARA ORDENAR EL ARRAYLIST DE CUENTAS CON EL CRITERIO DE VALOR
+	
+	// ESTE METODO BUBUJA ORDENA DE MAYOR A MENOR CON EL CRITERIO DE VALOR
+	
+	public void burbujaValor() {
+		
+		for(int i = 0 ; i < cuentas.size() - 1 ; i ++) {
+			
+			for(int j = 0 ; j < cuentas.size() - 1 ; j++) {
+				
+				if(cuentas.get(j).getValor() < cuentas.get(j + 1).getValor()) {
+					
+					Cuenta temporal = cuentas.get(j + 1);
+					
+					cuentas.set(j + 1, cuentas.get(j));
+					
+					cuentas.set(j, temporal);
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO BURBUJA PARA ORDENAR EL ARRAYLIST DE CUENTAS CON EL CRITERIO DE ID
+	
+	// ESTE METODO BUBUJA ORDENA DE MAYOR A MENOR CON EL CRITERIO DE ID
+		
+	public void burbujaId() {
+			
+		for(int i = 0 ; i < cuentas.size() - 1 ; i ++) {
+				
+			for(int j = 0 ; j < cuentas.size() - 1 ; j++) {
+					
+				if(cuentas.get(j).getId().compareTo(cuentas.get(j + 1).getId()) >= 0) {
+						
+					Cuenta temporal = cuentas.get(j + 1);
+						
+					cuentas.set(j + 1, cuentas.get(j));
+						
+					cuentas.set(j, temporal);
+						
+				}
+					
+			}
+				
+		}
+			
+	}
+		
 	// ---------------------------------------------------------------------------------------
 	
 }

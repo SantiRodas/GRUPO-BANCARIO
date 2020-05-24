@@ -32,7 +32,7 @@ class PersonaTest {
 	//****************************************************************************
 	//POR FAVOR TENER ABIERTA LA VENTANA CONSOLA PARA VER EL DISEÑO EXTRA DEL TEST
 	//****************************************************************************
-		
+	
 	@Test
 	public void lindo() throws InterruptedException {
 			
@@ -118,18 +118,18 @@ class PersonaTest {
 		
 		setup1();
 		
-		persona.agregarBeneficioDescuento("Cine", "123", "rodas425", 10000);
+		persona.agregarBeneficioDescuento("Cine", "123", "rodas425", 10000); // (1) - (4)
 		
-		persona.agregarBeneficioDescuento("Restaurante", "456", "rodas425", 15000);
+		persona.agregarBeneficioDescuento("Restaurante", "456", "rodas425", 15000); // (4) - (6)
 		
-		persona.agregarBeneficioDescuento("Piscina", "789", "rodas425", 12000);
+		persona.agregarBeneficioDescuento("Piscina", "789", "rodas425", 12000); // (2) - (5)
 		
 		
-		persona.agregarBeneficioPromocion("2x1 Cine", "741", "sora2018", 15000);
+		persona.agregarBeneficioPromocion("2x1 Cine", "741", "sora2018", 15000); // (3) - (1)
 		
-		persona.agregarBeneficioPromocion("3x2 Restaurante", "852", "sora2018", 20000);
+		persona.agregarBeneficioPromocion("3x2 Restaurante", "852", "sora2018", 20000); // (5) - (2)
 		
-		persona.agregarBeneficioPromocion("5x4 Piscina", "963", "sora2018", 30000);
+		persona.agregarBeneficioPromocion("5x4 Piscina", "963", "sora2018", 30000); // (6) - (3)
 		
 	}
 	
@@ -141,18 +141,18 @@ class PersonaTest {
 		
 		setup1();
 		
-		persona.agregarSalud("Imbanaco", "123", "Calle 5", "4", "imbanaco@gmail.com");
+		persona.agregarSalud("Imbanaco", "123", "Calle 5", "4", "imbanaco@gmail.com"); // (5) - (1)
 		
-		persona.agregarSalud("Sura", "456", "Calle 5 con 47", "4", "sura@gmail.com");
+		persona.agregarSalud("Sura", "456", "Calle 5 con 47", "4", "sura@gmail.com"); // (6) - (5)
 		
-		persona.agregarSalud("Coomeva", "789", "Carrera 9", "3", "coomeva@gmail.com");
+		persona.agregarSalud("Coomeva", "789", "Carrera 9", "3", "coomeva@gmail.com"); // (3) - (6)
 		
 		
-		persona.agregarArl("Colpatria", "147", "Calle 6", "4", "colpatria@gmail.com");
+		persona.agregarArl("Colpatria", "147", "Calle 6", "4", "colpatria@gmail.com"); // (2) - (2)
 		
-		persona.agregarArl("Equidad", "258", "Kilometro 1", "3", "equidad@gmail.com");
+		persona.agregarArl("Equidad", "258", "Kilometro 1", "3", "equidad@gmail.com"); // (4) - (3)
 		
-		persona.agregarArl("Colmena", "369", "Calle 7", "3", "colmena@gmail.com");
+		persona.agregarArl("Colmena", "369", "Calle 7", "3", "colmena@gmail.com"); // (1) - (4)
 		
 	}
 	
@@ -287,7 +287,7 @@ class PersonaTest {
 		
 		assertTrue(persona.getBeneficios().get(0).getNombre() == "Cine");
 		
-		assertTrue(persona.getBeneficios().get(3).getNombre() == "2x1 Cine");
+		assertTrue(persona.getBeneficios().get(2).getNombre() == "2x1 Cine");
 		
 	}
 	
@@ -509,6 +509,84 @@ class PersonaTest {
 		assertNull(persona.buscarSeguroSeguro("951"));
 		
 		assertEquals(0, persona.getSeguros().size());
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO TEST PARA COMPROBAR EL METODO DE ORDENAMIENTO SELECCION (VALOR)
+	
+	@Test
+	public void seleccionValor() throws InformacionExisteExcepcion {
+		
+		setup3();
+		
+		persona.seleccionValor();
+		
+		assertEquals("Cine", persona.getBeneficios().get(0).getNombre());
+		
+		assertEquals("Piscina", persona.getBeneficios().get(1).getNombre());
+		
+		assertEquals("Restaurante", persona.getBeneficios().get(3).getNombre());
+		
+		assertEquals("5x4 Piscina", persona.getBeneficios().get(5).getNombre());
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO TEST PARA COMPROBAR EL METODO DE ORDENAMIENTO SELECCION (NOMBRE)
+	
+	@Test
+	public void seleccionNombre() throws InformacionExisteExcepcion {
+		
+		setup3();
+		
+		persona.seleccionNombre();
+		
+		assertEquals("2x1 Cine", persona.getBeneficios().get(0).getNombre());
+		
+		assertEquals("5x4 Piscina", persona.getBeneficios().get(2).getNombre());
+		
+		assertEquals("Piscina", persona.getBeneficios().get(4).getNombre());
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO TEST PARA COMPROBAR EL METODO DE ORDENAMIENTO INSERCION (NOMBRE)
+	
+	@Test
+	public void insercionNombre() throws InformacionExisteExcepcion {
+		
+		setup4();
+		
+		persona.insercionNombre();
+		
+		assertEquals("colmena@gmail.com", persona.getSeguros().get(0).getEmail());
+		
+		assertEquals("coomeva@gmail.com", persona.getSeguros().get(2).getEmail());
+		
+		assertEquals("imbanaco@gmail.com", persona.getSeguros().get(4).getEmail());
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO TEST PARA COMPROBAR EL METODO DE ORDENAMIENTO INSERCION (ID)
+	
+	@Test
+	public void insercionId() throws InformacionExisteExcepcion {
+		
+		setup4();
+		
+		persona.insercionId();
+		
+		assertEquals("Calle 6", persona.getSeguros().get(1).getDireccion());
+		
+		assertEquals("Calle 7", persona.getSeguros().get(3).getDireccion());
+		
+		assertEquals("Carrera 9", persona.getSeguros().get(5).getDireccion());
 		
 	}
 	

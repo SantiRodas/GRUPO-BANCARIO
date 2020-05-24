@@ -427,6 +427,7 @@ public class Persona implements General {
 			
 			beneficios.add(promocion);
 			
+			seleccionValor();
 		}
 		
 	}
@@ -447,6 +448,8 @@ public class Persona implements General {
 			
 			beneficios.add(descuento);
 			
+			seleccionValor();
+			
 		}
 		
 	}
@@ -456,6 +459,8 @@ public class Persona implements General {
 	// METODO PARA BUSCAR UN BENEFICIO
 	
 	public boolean buscarBeneficio(String id) {
+		
+		seleccionNombre();
 		
 		for(int i = 0 ; i < beneficios.size() ; i ++) {
 			
@@ -477,6 +482,8 @@ public class Persona implements General {
 	
 	public Beneficio buscarBeneficioBeneficio(String id) {
 		
+		seleccionNombre();
+		
 		for(int i = 0 ; i < beneficios.size() ; i++) {
 			
 			if(beneficios.get(i).getId().equalsIgnoreCase(id)) {
@@ -496,6 +503,8 @@ public class Persona implements General {
 	// METODO PARA ELIMINAR UN BENEFICIO 
 	
 	public boolean eliminarBeneficio(String id) throws NoExisteInformacionExcepcion {
+		
+		seleccionNombre();
 
 		if(buscarBeneficio(id) == true) {
 			
@@ -527,6 +536,8 @@ public class Persona implements General {
 			
 			seguros.add(salud);
 			
+			insercionNombre();
+			
 		}
 		
 	}
@@ -547,6 +558,8 @@ public class Persona implements General {
 			
 			seguros.add(arl);
 			
+			insercionNombre();
+			
 		}
 		
 	}
@@ -556,6 +569,8 @@ public class Persona implements General {
 	// METODO PARA BUSCAR SEGURO RETORNA BOOLEAN
 	
 	public boolean buscarSeguro(String id) {
+		
+		insercionId();
 		
 		for(int i = 0 ; i < seguros.size() ; i ++) {
 			
@@ -577,6 +592,8 @@ public class Persona implements General {
 	
 	public Seguro buscarSeguroSeguro(String id) {
 		
+		insercionId();
+		
 		for(int i = 0 ; i < seguros.size() ; i ++){
 			
 			if(seguros.get(i).getId().equalsIgnoreCase(id)) {
@@ -596,6 +613,8 @@ public class Persona implements General {
 	// METODO PARA ELIMINAR SEGURO RETORNA BOOLEAN
 	
 	public boolean eliminarSeguro(String id) throws NoExisteInformacionExcepcion {
+		
+		insercionId();
 
 		if(buscarSeguro(id) == true) {
 			
@@ -606,6 +625,142 @@ public class Persona implements General {
 		} else {
 			
 			throw new NoExisteInformacionExcepcion("LA INFORMACION BUSCADA NO EXISTE EN EL PROGRAMA");
+			
+		}
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO DE ORDENAMIENTO SELECCION POR CRITERIO VALOR (BENEFICIO)
+	
+	// METODO QUE ORDENA DE MENOR A MAYOR
+	
+	public void seleccionValor() {
+		
+		for(int i = 0 ; i < beneficios.size() - 1 ; i++) {
+			
+			int min = i;
+			
+			for(int j = i + 1 ; j < beneficios.size() ; j++) {
+				
+				if(beneficios.get(j).getValor() < beneficios.get(min).getValor()) {
+					
+					min = j;
+					
+				}
+				
+			}
+			
+			if(i != min) {
+				
+				Beneficio auxiliar = beneficios.get(i);
+				
+				beneficios.set(i, beneficios.get(min));
+				
+				beneficios.set(min, auxiliar);
+				
+			}
+			
+		}
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO DE ORDENAMIENTO SELECCION POR CRITERIO NOMBRE (BENEFICIO)
+	
+	// METODO QUE ORDENA DE MENOR A MAYOR
+	
+	public void seleccionNombre() {
+		
+		for(int i = 0 ; i < beneficios.size() - 1 ; i ++) {
+			
+			int min = i;
+			
+			for(int j = i ; j < beneficios.size() ; j ++) {
+				
+				if(beneficios.get(j).getNombre().compareTo(beneficios.get(min).getNombre()) <= 0 ) {
+					
+					min = j;
+					
+				}
+				
+			}
+			
+			if(i != min) {
+				
+				Beneficio auxiliar = beneficios.get(i);
+				
+				beneficios.set(i, beneficios.get(min));
+				
+				beneficios.set(min, auxiliar);
+				
+			}
+			
+		}
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO DE ORDENAMIENTO INSERCION POR CRITERIO NOMBRE (SEGURO)
+	
+	// METODO QUE ORDENA DE MENOR A MAYOR
+	
+	public void insercionNombre() {
+		
+		int p, j;
+		
+		Seguro auxiliar = null;
+		
+		for(p = 1 ; p < seguros.size() ; p ++){
+			
+			auxiliar = seguros.get(p);
+			
+			j = p - 1;
+			
+			while((j >= 0) && (auxiliar.getNombre().compareTo(seguros.get(j).getNombre()) <= 0 )) {
+				
+				seguros.set(j + 1, seguros.get(j));
+				
+				j--;
+				
+			}
+			
+			seguros.set(j + 1, auxiliar);
+			
+		}
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO DE ORDENAMIENTO INSERCION POR CRITERIO ID (SEGURO)
+	
+	// METODO QUE ORDENA DE MENOR A MAYOR
+	
+	public void insercionId() {
+		
+		int p, j;
+		
+		Seguro auxiliar = null;
+		
+		for(p = 1 ; p < seguros.size() ; p ++){
+			
+			auxiliar = seguros.get(p);
+			
+			j = p - 1;
+			
+			while((j >= 0) && (auxiliar.getId().compareTo(seguros.get(j).getId()) <= 0 )) {
+				
+				seguros.set(j + 1, seguros.get(j));
+				
+				j--;
+				
+			}
+			
+			seguros.set(j + 1, auxiliar);
 			
 		}
 		

@@ -30,7 +30,7 @@ class ServicioTest {
 	//****************************************************************************
 	//POR FAVOR TENER ABIERTA LA VENTANA CONSOLA PARA VER EL DISEÑO EXTRA DEL TEST
 	//****************************************************************************
-		
+	
 	@Test
 	public void lindo() throws InterruptedException {
 			
@@ -100,15 +100,35 @@ class ServicioTest {
 		
 		setup1();
 		
-		servicio.agregarCuenta("741852", 2000000);
+		servicio.agregarCuenta("741852", 2000000); // 2.000.000 (5)
 		
-		servicio.agregarCuenta("963789", 1000000);
+		servicio.agregarCuenta("963789", 1000000); // 1.000.000 (3)
 		
-		servicio.agregarCuenta("456357", 250000);
+		servicio.agregarCuenta("456357", 250000); // 250.000 (2)
 		
-		servicio.agregarCuenta("59864", 100000);
+		servicio.agregarCuenta("59864", 100000); // 100.000 (1)
 		
-		servicio.agregarCuenta("25401", 1500000);
+		servicio.agregarCuenta("25401", 1500000); // 1.500.000 (4)
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// ESCENARIO NUMERO 3 PARA COMPROBAR EL METODO BURBUJA
+	
+	public void setup3() throws InformacionExisteExcepcion {
+		
+		setup1();
+		
+		servicio.agregarCuenta("456357", 350000); // 350.000 (4) - (2)
+		
+		servicio.agregarCuenta("59864", 200000); // 200.000 (5) - (3)
+		
+		servicio.agregarCuenta("25401", 2500000); // 2.500.000 (2) - (1)
+		
+		servicio.agregarCuenta("741852", 3000000); // 3.000.000 (1) - (4)
+		
+		servicio.agregarCuenta("963789", 1000000); // 2.000.000 (3) - 5)
 		
 	}
 	
@@ -215,7 +235,7 @@ class ServicioTest {
 		
 		servicio.eliminar("741852");
 		
-		assertEquals("963789", servicio.getCuentas().get(0).getId());
+		assertEquals("25401", servicio.getCuentas().get(0).getId());
 		
 	}
 	
@@ -234,6 +254,44 @@ class ServicioTest {
 		
 		assertEquals(0, servicio.getCuentas().size());
 		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO TEST PARA EL METODO DE ORDENAMIENTO BURBUJA
+	
+	@Test
+	public void burbujaValorTest() throws InformacionExisteExcepcion {
+		
+		setup3();
+		
+		servicio.burbujaValor();
+		
+		assertTrue(servicio.getCuentas().get(0).getId() == "741852");
+		
+		assertTrue(servicio.getCuentas().get(1).getId() == "25401");
+		
+		assertTrue(servicio.getCuentas().get(3).getId() == "456357");
+		
+	}
+		
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO TEST PARA EL METODO DE ORDENAMIENTO BURBUJA
+	
+	@Test
+	public void burbujaIdTest() throws InformacionExisteExcepcion {
+			
+		setup3();
+			
+		servicio.burbujaId();
+			
+		assertTrue(servicio.getCuentas().get(0).getId() == "25401");
+			
+		assertTrue(servicio.getCuentas().get(1).getId() == "456357");
+			
+		assertTrue(servicio.getCuentas().get(3).getId() == "741852");
+			
 	}
 	
 	// ---------------------------------------------------------------------------------------
