@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="492.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="517.0" fitWidth="772.0" layoutX="-7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@fondo-negro-vacio-luz-iluminada-ademas_93675-45849.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="196.0" layoutY="61.0" text="Nombre del banco:" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="244.0" layoutY="135.0" text="ID del banco:" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nombreBancoTexto" layoutX="413.0" layoutY="62.0" promptText="Nombre" style="-fx-background-color: transparent; -fx-border-color: white; -fx-text-fill: white;" />
+      <TextField fx:id="idBancoTexto" layoutX="413.0" layoutY="136.0" promptText="Id" style="-fx-background-color: transparent; -fx-border-color: white; -fx-text-fill: white;" />
+      <Button fx:id="agregarBancoBoton" layoutX="349.0" layoutY="216.0" mnemonicParsing="false" onAction="#agregar" style="-fx-background-color: transparent; -fx-border-color: white;" text="Agregar" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Circle fill="#3fd9bf00" layoutX="382.0" layoutY="381.0" radius="72.0" stroke="WHITE" strokeType="INSIDE" />
+      <Rectangle fx:id="cuadrado1" arcHeight="5.0" arcWidth="5.0" fill="#81b5e500" height="103.0" layoutX="330.0" layoutY="330.0" stroke="WHITE" strokeType="INSIDE" width="104.0" />
+      <Circle fill="#3fd9bf00" layoutX="382.0" layoutY="382.0" radius="48.0" stroke="WHITE" strokeType="INSIDE" />
+      <Rectangle fx:id="cuadrado2" arcHeight="5.0" arcWidth="5.0" fill="#81b5e500" height="63.0" layoutX="349.0" layoutY="351.0" stroke="WHITE" strokeType="INSIDE" width="66.0" />
+   </children>
+</Pane>

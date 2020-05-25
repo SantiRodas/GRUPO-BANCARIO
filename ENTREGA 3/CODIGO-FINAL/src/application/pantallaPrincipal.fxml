@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="508.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="Banco">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#agregarBanco" text="Agregar" />
+                  <MenuItem mnemonicParsing="false" onAction="#buscarBanco" text="Buscar" />
+                  <MenuItem mnemonicParsing="false" onAction="#eliminarBanco" text="Eliminar" />
+                  <MenuItem mnemonicParsing="false" onAction="#informeBanco" text="Informe" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Sucursal">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#agregarSucursal" text="Agregar" />
+                  <MenuItem mnemonicParsing="false" onAction="#buscarSucursal" text="Buscar" />
+                  <MenuItem mnemonicParsing="false" onAction="#eliminarSucursal" text="Eliminar" />
+                  <MenuItem mnemonicParsing="false" onAction="#moverSucursal" text="Mover" />
+                  <MenuItem mnemonicParsing="false" onAction="#informeSucursal" text="Informe" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Servicio">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#agregarServicio" text="Agregar" />
+                  <MenuItem mnemonicParsing="false" onAction="#buscarServicio" text="Buscar" />
+                  <MenuItem mnemonicParsing="false" onAction="#eliminarServicio" text="Eliminar" />
+                  <MenuItem mnemonicParsing="false" onAction="#informeServicio" text="Informe" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Empleado">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#agregarEmpleado" text="Agregar" />
+                  <MenuItem mnemonicParsing="false" onAction="#asignarBeneficioEmpleado" text="Asignar beneficio" />
+                  <MenuItem mnemonicParsing="false" onAction="#asignarEpsEmpleado" text="Asignar eps" />
+                  <MenuItem mnemonicParsing="false" onAction="#cambiarEpsEmpleado" text="Cambiar eps" />
+                  <MenuItem mnemonicParsing="false" onAction="#buscarEmpleado" text="Buscar" />
+                  <MenuItem mnemonicParsing="false" onAction="#eliminarEmpleado" text="Eliminar" />
+                  <MenuItem mnemonicParsing="false" onAction="#moverBancoEmpleado" text="Mover a banco" />
+                  <MenuItem mnemonicParsing="false" onAction="#moverSucursalEmpleado" text="Mover a sucursal" />
+                  <MenuItem mnemonicParsing="false" onAction="#informeEmpleado" text="Informe" />
+                  <MenuItem mnemonicParsing="false" onAction="#liquidarEmpleado" text="Liquidar" />
+                  <MenuItem mnemonicParsing="false" onAction="#dineroEmpleado" text="Dinero" />
+                  <MenuItem mnemonicParsing="false" onAction="#prestamoEmpleado" text="Prestamo" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Cliente">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#agregarCliente" text="Agregar" />
+                  <MenuItem mnemonicParsing="false" onAction="#asignarBeneficioCliente" text="Asignar beneficio" />
+                  <MenuItem mnemonicParsing="false" onAction="#buscarCliente" text="Buscar" />
+                  <MenuItem mnemonicParsing="false" onAction="#eliminarCliente" text="Eliminar" />
+                  <MenuItem mnemonicParsing="false" onAction="#moverBancoCliente" text="Mover a banco" />
+                  <MenuItem mnemonicParsing="false" onAction="#informeCliente" text="Informe" />
+                  <MenuItem mnemonicParsing="false" onAction="#dineroCliente" text="Dinero" />
+                  <MenuItem mnemonicParsing="false" onAction="#prestamoCliente" text="Prestamo" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Cuenta">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#agregarCuenta" text="Agregar" />
+                  <MenuItem mnemonicParsing="false" onAction="#buscarCuenta" text="Buscar" />
+                  <MenuItem mnemonicParsing="false" onAction="#eliminarCuenta" text="Eliminar" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Eps">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#agregarEps" text="Agregar" />
+                  <MenuItem mnemonicParsing="false" onAction="#buscarEps" text="Buscar" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Extra">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#nosotros" text="Nosotros" />
+                  <MenuItem mnemonicParsing="false" onAction="#inversion" text="Inversion medio ambiente" />
+                  <MenuItem mnemonicParsing="false" onAction="#covid" text="Numero de cuentas" />
+                  <MenuItem mnemonicParsing="false" onAction="#video" text="Video Institucional" />
+               </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <BorderPane fx:id="panelPrincipal" prefHeight="492.0" prefWidth="760.0">
+         <center>
+            <ImageView fitHeight="509.0" fitWidth="875.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@imagen3.jpeg" />
+               </image>
+            </ImageView>
+         </center>
+      </BorderPane>
+   </children>
+</VBox>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="492.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="492.0" fitWidth="877.0" layoutX="-112.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@4-min-620x350.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="205.0" layoutY="179.0" text="Digite el ID del banco: " textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="eliminarTexto" layoutX="405.0" layoutY="180.0" promptText="Id" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-color: white;" />
+      <Button fx:id="eliminarBoton" layoutX="348.0" layoutY="282.0" mnemonicParsing="false" onAction="#eliminarBanco" style="-fx-background-color: transparent; -fx-border-color: white;" text="Realizar" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+   </children>
+</Pane>
