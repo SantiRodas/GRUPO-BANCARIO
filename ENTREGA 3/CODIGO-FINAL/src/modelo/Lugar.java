@@ -616,4 +616,18 @@ public class Lugar implements General {
 	
 	// ---------------------------------------------------------------------------------------
 	
+	public int total(int salario, int dias, int falta) throws Mayor365Excepcion, Mayor183Excepcion {
+		
+		int cesantias = calcularCesantias(salario, dias);
+		
+		int prima = calcularPrima(salario, falta);
+		
+		int vacaciones = calcularVacaciones(salario, dias);
+		
+		return cesantias + prima + vacaciones;
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
 }

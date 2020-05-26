@@ -12,6 +12,8 @@ import java.io.IOException;
 
 import excepciones.InformacionExisteExcepcion;
 import excepciones.InformacionVacia;
+import excepciones.Mayor183Excepcion;
+import excepciones.Mayor365Excepcion;
 import excepciones.NoExisteInformacionExcepcion;
 import excepciones.ValorIncorrectoExcepcion;
 import hilos.CuadradosHilo;
@@ -406,7 +408,7 @@ public class ControladoraEmpleado {
 	// ---------------------------------------------------------------------------------------
 	 
 	@FXML
-    public void liquidar(ActionEvent event) throws InformacionVacia, ValorIncorrectoExcepcion {
+    public void liquidar(ActionEvent event) throws InformacionVacia, ValorIncorrectoExcepcion, Mayor365Excepcion, Mayor183Excepcion {
 		
 		CuadradosHilo ch = new CuadradosHilo(true, this);
 		
@@ -423,6 +425,14 @@ public class ControladoraEmpleado {
 			if(salario != null && trabajo != null && falta != null) {
 				
 				if(salario > 0 || trabajo > 0 || falta >= 0) {
+					
+					cesantiasla.setText(Integer.toString(lugar.calcularCesantias(salario, trabajo)));
+					
+					primala.setText(Integer.toString(lugar.calcularPrima(salario, falta)));
+					
+					vacacionesla.setText(Integer.toString(lugar.calcularVacaciones(salario, trabajo)));
+					
+					totalla.setText(Integer.toString(lugar.total(salario, trabajo, falta)));
 					
 					ch.start();
 					
@@ -443,6 +453,7 @@ public class ControladoraEmpleado {
     	    alert80044.setHeaderText(null);
     	    alert80044.setTitle("Error");
     	    alert80044.setContentText("Datos invalidos, intente nuevamente");
+    	    
     	    alert80044.showAndWait();
     	    
     	    ch.setValidacion(false);
@@ -452,12 +463,57 @@ public class ControladoraEmpleado {
 			Alert alert800447 = new Alert(Alert.AlertType.ERROR);
     	    alert800447.setHeaderText(null);
     	    alert800447.setTitle("Error");
-    	    alert800447.setContentText("Datos invalidos, intente nuevamente");
+    	    alert800447.setContentText("Complete los espacios");
+    	    
     	    alert800447.showAndWait();
+    	    
+    	    ch.setValidacion(false);
+			
+		} catch(ValorIncorrectoExcepcion a2) {
+			
+			Alert alert8004478 = new Alert(Alert.AlertType.ERROR);
+    	    alert8004478.setHeaderText(null);
+    	    alert8004478.setTitle("Error");
+    	    alert8004478.setContentText("Datos invalidos, intente nuevamente");
+    	    
+    	    alert8004478.showAndWait();
+    	    
+    	    ch.setValidacion(false);
+			
+		} catch(Mayor365Excepcion m3) {
+			
+			Alert alert80044781 = new Alert(Alert.AlertType.ERROR);
+    	    alert80044781.setHeaderText(null);
+    	    alert80044781.setTitle("Error");
+    	    alert80044781.setContentText("Datos invalidos, intente nuevamente");
+    	    
+    	    alert80044781.showAndWait();
+    	    
+    	    ch.setValidacion(false);
+			
+		} catch(Mayor183Excepcion m1) {
+			
+			Alert alert800447814 = new Alert(Alert.AlertType.ERROR);
+    	    alert800447814.setHeaderText(null);
+    	    alert800447814.setTitle("Error");
+    	    alert800447814.setContentText("Datos invalidos, intente nuevamente");
+    	    
+    	    alert800447814.showAndWait();
+    	    
+    	    ch.setValidacion(false);
+
+		} catch(NullPointerException a2) {
+			
+			Alert alert8004475 = new Alert(Alert.AlertType.ERROR);
+    	    alert8004475.setHeaderText(null);
+    	    alert8004475.setTitle("Error");
+    	    alert8004475.setContentText("Complete los espacios");
+    	    
+    	    alert8004475.showAndWait();
+    	    
+    	    ch.setValidacion(false);
 			
 		}
-		
-		
 
     }
 	
@@ -481,7 +537,27 @@ public class ControladoraEmpleado {
 	@FXML
 	public void mostrar() {
 		
+		cesantiasla.setVisible(true);
 		
+		primala.setVisible(true);
+		
+		vacacionesla.setVisible(true);
+		
+		totalla.setVisible(true);
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	public void initialize() {
+		
+		cesantiasla.setVisible(false);
+		
+		primala.setVisible(false);
+		
+		vacacionesla.setVisible(false);
+		
+		totalla.setVisible(false);
 		
 	}
 	

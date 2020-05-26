@@ -55,6 +55,8 @@ public class CuadradosHilo extends Thread {
 	@Override
 	public void run() {
 		
+		Platform.runLater(() -> controladora.initialize());
+		
 		int contador = 0;
 		
 		while(validacion == true && contador <= 500) {
