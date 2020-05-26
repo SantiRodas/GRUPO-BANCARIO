@@ -76,15 +76,7 @@ public class ControladoraSucursal {
 
     @FXML
     private Button eliminarBoton;
-	
-	// ---------------------------------------------------------------------------------------
-	
-    @FXML
-    private TextField informeTexto;
-
-    @FXML
-    private Button informeBoton;
-	
+		
 	// ---------------------------------------------------------------------------------------
 	
 	
@@ -319,13 +311,6 @@ public class ControladoraSucursal {
 						
 		}
    
-    }
-    
-    // ---------------------------------------------------------------------------------------
-    
-    @FXML
-    public void informe(ActionEvent event) {
-
     }
     
     // ---------------------------------------------------------------------------------------

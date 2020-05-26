@@ -8,8 +8,14 @@
 
 package application;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
-
+import java.io.PrintWriter;
+import java.util.Optional;
 import excepciones.InformacionExisteExcepcion;
 import excepciones.InformacionVacia;
 import excepciones.Mayor183Excepcion;
@@ -24,7 +30,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.StageStyle;
 import javafx.scene.control.Alert.AlertType;
 import modelo.Lugar;
 
@@ -75,15 +83,7 @@ public class ControladoraEmpleado {
 
     @FXML
     private Button eliminarBoton;
-    
-	// ---------------------------------------------------------------------------------------
-	
-    @FXML
-    private TextField informeTexto;
-
-    @FXML
-    private Button informeBoton;
-    
+        
 	// ---------------------------------------------------------------------------------------
 	
     @FXML
@@ -253,7 +253,7 @@ public class ControladoraEmpleado {
 			Alert alert38 = new Alert(AlertType.WARNING);
 			alert38.setTitle("Atencion");
 			alert38.setHeaderText("No se puede agregar el empleado");
-			alert38.setContentText("Digite la informacion correspondiente");
+			alert38.setContentText("Datos erroneos, intente nuevamente");
 
 			alert38.showAndWait();
 			
@@ -397,14 +397,7 @@ public class ControladoraEmpleado {
 		}
 		
 	}
-	 
-	// ---------------------------------------------------------------------------------------
-	
-	@FXML
-	public void informe(ActionEvent event) {
-
-	}
-	 
+	 	 
 	// ---------------------------------------------------------------------------------------
 	 
 	@FXML
@@ -452,7 +445,7 @@ public class ControladoraEmpleado {
 			Alert alert80044 = new Alert(Alert.AlertType.ERROR);
     	    alert80044.setHeaderText(null);
     	    alert80044.setTitle("Error");
-    	    alert80044.setContentText("Datos invalidos, intente nuevamente");
+    	    alert80044.setContentText("Datos erroneos, intente nuevamente");
     	    
     	    alert80044.showAndWait();
     	    
@@ -485,7 +478,7 @@ public class ControladoraEmpleado {
 			Alert alert80044781 = new Alert(Alert.AlertType.ERROR);
     	    alert80044781.setHeaderText(null);
     	    alert80044781.setTitle("Error");
-    	    alert80044781.setContentText("Datos invalidos, intente nuevamente");
+    	    alert80044781.setContentText("No puede ser mayor a 365");
     	    
     	    alert80044781.showAndWait();
     	    
@@ -496,7 +489,7 @@ public class ControladoraEmpleado {
 			Alert alert800447814 = new Alert(Alert.AlertType.ERROR);
     	    alert800447814.setHeaderText(null);
     	    alert800447814.setTitle("Error");
-    	    alert800447814.setContentText("Datos invalidos, intente nuevamente");
+    	    alert800447814.setContentText("No puede ser mayor a 183");
     	    
     	    alert800447814.showAndWait();
     	    
@@ -549,7 +542,7 @@ public class ControladoraEmpleado {
 	
 	// ---------------------------------------------------------------------------------------
 	
-	public void initialize() {
+	public void iniciarLabels() {
 		
 		cesantiasla.setVisible(false);
 		
@@ -570,7 +563,7 @@ public class ControladoraEmpleado {
 			
 			Integer salario = Integer.parseInt(salarioTexto.getText());
 			
-			if(salario > 0) {
+			if(salario >= 100000) {
 				
 				int numeroCuotas = 0;
 				
@@ -599,6 +592,10 @@ public class ControladoraEmpleado {
 				
 				int cuotan = lugar.calcularCuota(deudan, numeroCuotas);
 				
+				String empleado = pedirId();
+				
+				escribir(empleado, maximo, deudan, cuotan);
+				
 				String mensaje1 = deudan+ "";
 				
 				String mensaje2 = cuotan + "";
@@ -606,6 +603,8 @@ public class ControladoraEmpleado {
 				deuda.setText(mensaje1);
 				
 				cuota.setText(mensaje2);
+				
+				leer(empleado);
 				
 			} else {
 				
@@ -634,13 +633,156 @@ public class ControladoraEmpleado {
 			Alert alert900 = new Alert(Alert.AlertType.ERROR);
     	    alert900.setHeaderText(null);
     	    alert900.setTitle("Error");
-    	    alert900.setContentText("Datos invalidos, intente nuevamente");
+    	    alert900.setContentText("Salario insuficiente, intente con uno mayor");
     	    alert900.showAndWait();
 			
+		} catch(ArithmeticException a2) {
+			
+			Alert alert9004578 = new Alert(Alert.AlertType.ERROR);
+    	    alert9004578.setHeaderText(null);
+    	    alert9004578.setTitle("Error");
+    	    alert9004578.setContentText("Seleccione el numero de cuotas");
+    	    alert9004578.showAndWait();
+    	    
 		}
 		
     }
 	 
+	// ---------------------------------------------------------------------------------------
+	
+	public void leer(String empleado) {
+		
+		File recibo = new File("reportes/" + empleado + ".txt");
+		
+		FileReader archivo = null;
+		
+		BufferedReader lector = null;
+		
+		try {
+			archivo = new FileReader(recibo);
+			
+			lector = new BufferedReader(archivo);
+			
+			String txt = " ";
+			
+			String show = " ";
+			
+			while ((txt = lector.readLine()) != null) {
+				
+				show += txt + "\n";
+				
+			}
+			
+			Alert info = new Alert(Alert.AlertType.INFORMATION);
+			info.setTitle("Recibo");
+			info.setHeaderText("El recibo generado es el siguiente");
+			info.setContentText(show);
+			info.showAndWait();
+			
+		} catch (FileNotFoundException e) {
+			
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+			
+		} catch (IOException e) {
+			
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+			
+		}finally {
+			
+			try {
+				
+				archivo.close();
+				
+				lector.close();
+				
+			} catch (IOException e) {
+				
+				// TODO Auto-generated catch block
+				
+				e.printStackTrace();
+				
+			}
+			
+		}
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	public void escribir(String empleado, int maximo, int deuda, int cuota) {
+		
+		FileWriter archivo = null;
+		
+		PrintWriter escritor = null;
+		
+		try {
+			archivo = new FileWriter("reportes/" + empleado + ".txt");
+			
+			escritor = new PrintWriter(archivo);
+			
+			escritor.println("Prestamo Maximo: " + maximo);
+			
+			escritor.println("Deuda Adquirida: " + deuda);
+			
+			escritor.println("Cuotas Acordadas: " + cuota);
+			
+			escritor.println("Atendido Por: " + lugar.buscarEmpleadoEmpleado(empleado).getNombre());
+		
+		} catch (IOException e) {
+			
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+			
+		}finally {
+			
+			try {
+				
+				archivo.close();
+				
+				escritor.close();
+				
+			} catch (IOException e2) {
+				
+				// TODO Auto-generated catch block
+				
+				e2.printStackTrace();
+				
+			}
+			
+		}
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	public String pedirId() {
+		
+		String id = " ";
+		
+		TextInputDialog empleado = new TextInputDialog();
+		
+		empleado.setTitle("Datos del empleado");
+		empleado.setHeaderText("Porfavor ingresa el Id del empleado para guardar el archivo");
+		empleado.setContentText("Recuerda que debe de existir el empleado");
+		empleado.initStyle(StageStyle.UTILITY);
+		
+		Optional<String>txt = empleado.showAndWait();
+		
+		if (txt.isPresent()) {
+			
+			id = txt.get();
+			
+		}
+	    
+		return id;
+		
+	}
+	
 	// ---------------------------------------------------------------------------------------
 
 }

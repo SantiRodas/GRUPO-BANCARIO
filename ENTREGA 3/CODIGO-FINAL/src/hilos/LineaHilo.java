@@ -9,7 +9,6 @@
 package hilos;
 
 import application.ControladoraBanco;
-import javafx.application.Platform;
 
 public class LineaHilo extends Thread {
 	
@@ -60,9 +59,7 @@ public class LineaHilo extends Thread {
 		while(validacion == true && contador <= 500) {
 			
 			try {
-				
-				controladora.girar();
-				
+								
 				contador ++;
 				
 				sleep(10);
@@ -76,9 +73,7 @@ public class LineaHilo extends Thread {
 			}
 			
 		}
-		
-		Platform.runLater(() -> controladora.imprimirInforme());
-		
+				
 	}
 	
 	// ---------------------------------------------------------------------------------------

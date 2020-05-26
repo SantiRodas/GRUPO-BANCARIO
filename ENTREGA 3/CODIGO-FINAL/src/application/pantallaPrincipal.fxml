@@ -17,7 +17,6 @@
               <MenuItem mnemonicParsing="false" onAction="#agregarBanco" text="Agregar" />
                   <MenuItem mnemonicParsing="false" onAction="#buscarBanco" text="Buscar" />
                   <MenuItem mnemonicParsing="false" onAction="#eliminarBanco" text="Eliminar" />
-                  <MenuItem mnemonicParsing="false" onAction="#informeBanco" text="Informe" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Sucursal">
@@ -25,7 +24,6 @@
                   <MenuItem mnemonicParsing="false" onAction="#agregarSucursal" text="Agregar" />
                   <MenuItem mnemonicParsing="false" onAction="#buscarSucursal" text="Buscar" />
                   <MenuItem mnemonicParsing="false" onAction="#eliminarSucursal" text="Eliminar" />
-                  <MenuItem mnemonicParsing="false" onAction="#informeSucursal" text="Informe" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Servicio">
@@ -33,7 +31,6 @@
                   <MenuItem mnemonicParsing="false" onAction="#agregarServicio" text="Agregar" />
                   <MenuItem mnemonicParsing="false" onAction="#buscarServicio" text="Buscar" />
                   <MenuItem mnemonicParsing="false" onAction="#eliminarServicio" text="Eliminar" />
-                  <MenuItem mnemonicParsing="false" onAction="#informeServicio" text="Informe" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Empleado">
@@ -41,7 +38,6 @@
                   <MenuItem mnemonicParsing="false" onAction="#agregarEmpleado" text="Agregar" />
                   <MenuItem mnemonicParsing="false" onAction="#buscarEmpleado" text="Buscar" />
                   <MenuItem mnemonicParsing="false" onAction="#eliminarEmpleado" text="Eliminar" />
-                  <MenuItem mnemonicParsing="false" onAction="#informeEmpleado" text="Informe" />
                   <MenuItem mnemonicParsing="false" onAction="#liquidarEmpleado" text="Liquidar" />
                   <MenuItem mnemonicParsing="false" onAction="#prestamoEmpleado" text="Prestamo" />
                </items>
@@ -51,7 +47,6 @@
                   <MenuItem mnemonicParsing="false" onAction="#agregarCliente" text="Agregar" />
                   <MenuItem mnemonicParsing="false" onAction="#buscarCliente" text="Buscar" />
                   <MenuItem mnemonicParsing="false" onAction="#eliminarCliente" text="Eliminar" />
-                  <MenuItem mnemonicParsing="false" onAction="#informeCliente" text="Informe" />
                   <MenuItem mnemonicParsing="false" onAction="#prestamoCliente" text="Prestamo" />
                </items>
             </Menu>
@@ -60,6 +55,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#agregarCuenta" text="Agregar" />
                   <MenuItem mnemonicParsing="false" onAction="#buscarCuenta" text="Buscar" />
                   <MenuItem mnemonicParsing="false" onAction="#eliminarCuenta" text="Eliminar" />
+                  <MenuItem mnemonicParsing="false" onAction="#informeCuenta" text="Informe" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Eps">
@@ -74,6 +70,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#agregarBeneficio" text="Agregar" />
                   <MenuItem mnemonicParsing="false" onAction="#buscarBeneficio" text="Buscar" />
                   <MenuItem mnemonicParsing="false" onAction="#eliminarBeneficio" text="Eliminar" />
+                  <MenuItem mnemonicParsing="false" onAction="#informeBenefcio" text="Informe" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Extra">

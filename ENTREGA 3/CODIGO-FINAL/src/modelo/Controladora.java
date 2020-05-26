@@ -8,12 +8,23 @@
 
 package modelo;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
 import excepciones.InformacionExisteExcepcion;
 import excepciones.NoExisteInformacionExcepcion;
 
-public class Controladora implements General {
+public class Controladora implements General, Serializable {
 	
 	// ---------------------------------------------------------------------------------------
+	
+	// ID SERIALIZABLE
+	
+	private static final long serialVersionUID = 1L;
 	
 	// RELACION PRIMER BANCO CON LA CLASE BANCO
 	
@@ -206,6 +217,63 @@ public class Controladora implements General {
 			
 		}
 
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO PARA SERIALIZAR EL SISTEMA
+	
+	public void serial() {
+		
+		try {
+			
+			FileOutputStream obj = new FileOutputStream("data/Info_Bancos.txt");
+			
+			ObjectOutputStream data = new ObjectOutputStream(obj);
+			
+			
+			data.writeObject(primerBanco);
+			
+			data.close();
+			
+			obj.close();
+			
+		} catch (IOException io) {
+			
+			System.err.println(io.getMessage());
+			
+		}
+			
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO PARA DESERIALIZAR EL SISTEMA
+	
+	public void deserial() {
+		
+		try {
+			
+			FileInputStream obj = new FileInputStream("data/Info_Bancos.txt");
+			
+			ObjectInputStream data = new ObjectInputStream(obj);
+			
+			Banco b = (Banco) data.readObject();
+			
+			data.close();
+			
+			obj.close();
+			
+		} catch (IOException io) {
+			
+			System.err.println(io.getMessage());
+			
+		} catch (ClassNotFoundException cln) {
+			
+			System.err.println(cln.getMessage());
+			
+		}
+		
 	}
 	
 	// ---------------------------------------------------------------------------------------

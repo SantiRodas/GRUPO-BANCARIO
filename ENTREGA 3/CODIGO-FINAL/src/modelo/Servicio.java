@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import excepciones.InformacionExisteExcepcion;
 import excepciones.NoExisteInformacionExcepcion;
 
-public class Servicio implements General {
+public class Servicio implements General, Especifico {
 	
 	// ---------------------------------------------------------------------------------------
 	
@@ -310,6 +310,53 @@ public class Servicio implements General {
 		}
 		
 		return false;
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO PARA CALCULAR EL NUMERO DE CUENTAS
+
+	@Override
+	public int calcular() {
+		
+		int total = 0;
+		
+		total = cuentas.size();
+		
+		return total;
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO PARA CALCULAR EL VALOR DE TODAS LAS CUENTAS
+	
+	public int total() {
+		
+		int total = 0;
+		
+		for(int i = 0 ; i < cuentas.size() ; i ++) {
+			
+			total = total + cuentas.get(i).getValor();
+			
+		}
+		
+		return total;
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO PARA CALULAR EL PROMEDIO DE LAS CUENTAS
+	
+	public int promedio() {
+		
+		int cuentas = calcular();
+		
+		int valor = total();
+		
+		return valor / cuentas;
 		
 	}
 		

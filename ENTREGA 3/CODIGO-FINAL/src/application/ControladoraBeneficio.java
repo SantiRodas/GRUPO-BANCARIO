@@ -76,6 +76,20 @@ public class ControladoraBeneficio {
     @FXML
     private Button eliminarBoton;
     
+    // ---------------------------------------------------------------------------------------
+    
+    @FXML
+    private Button informeBoton;
+
+    @FXML
+    private Label numerola;
+
+    @FXML
+    private Label valorla1;
+
+    @FXML
+    private Label promediola;
+    
 	// ---------------------------------------------------------------------------------------
 	
     @FXML
@@ -156,7 +170,7 @@ public class ControladoraBeneficio {
 			Alert alert15994114 = new Alert(AlertType.WARNING);
 			alert15994114.setTitle("Atencion");
 			alert15994114.setHeaderText("No se puede agregar el beneficio");
-			alert15994114.setContentText("Digite la informacion correspondiente");
+			alert15994114.setContentText("Datos erroneos para el sistema");
 
 			alert15994114.showAndWait();
 			
@@ -294,6 +308,31 @@ public class ControladoraBeneficio {
 			alert2277664.showAndWait();
 						
 		}
+
+    }
+    
+    // ---------------------------------------------------------------------------------------
+    
+    @FXML
+    public void informe(ActionEvent event) {
+    	
+    	try {
+    		
+    		numerola.setText(Integer.toString(persona.calcular()));
+        	
+        	valorla1.setText(Integer.toString(persona.total()));
+        	
+        	promediola.setText(Integer.toString(persona.promedio()));
+    		
+    	} catch(ArithmeticException ae) {
+    		
+    		Alert alert700 = new Alert(Alert.AlertType.ERROR);
+    	    alert700.setHeaderText(null);
+    	    alert700.setTitle("Error");
+    	    alert700.setContentText("No se puede realizar el informe, no hay datos");
+    	    alert700.showAndWait();
+   
+    	}
 
     }
     

@@ -12,7 +12,6 @@ import excepciones.InformacionExisteExcepcion;
 import excepciones.InformacionVacia;
 import excepciones.NoExisteInformacionExcepcion;
 import hilos.CuadradoHilo;
-import hilos.LineaHilo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -20,7 +19,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 
 import modelo.Controladora;
@@ -63,14 +61,6 @@ public class ControladoraBanco {
 	
 	@FXML
     private Button eliminarBoton;
-	
-	// ---------------------------------------------------------------------------------------
-	
-	@FXML
-    private Button informeBoton;
-	
-	@FXML
-	private Line linea;
 	
 	// ---------------------------------------------------------------------------------------
 	
@@ -316,40 +306,7 @@ public class ControladoraBanco {
 		}
 		
     }
-	
-	// ---------------------------------------------------------------------------------------
-	
-	@FXML
-    public void informeBanco(ActionEvent event) {
-		
-		LineaHilo lh = new LineaHilo(true, this);
-		
-		lh.start();
-
-    }
-	
-	// ---------------------------------------------------------------------------------------
-	
-	@FXML
-	public void girar() {
-    	
-    	if(true) {
-    		
-    		linea.setRotate(linea.getRotate() + 1);
-    		
-    	}
-    	
-    }
-	
-	// ---------------------------------------------------------------------------------------
-	
-	@FXML
-	public void imprimirInforme() {
-		
-		
-		
-	}
-	
+				
 	// ---------------------------------------------------------------------------------------
 
 }

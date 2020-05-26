@@ -13,7 +13,7 @@ import excepciones.Mayor183Excepcion;
 import excepciones.Mayor365Excepcion;
 import excepciones.NoExisteInformacionExcepcion;
 
-public class Lugar implements General {
+public class Lugar implements General{
 	
 	// ---------------------------------------------------------------------------------------
 	
@@ -373,7 +373,7 @@ public class Lugar implements General {
 	
 	public Empleado buscarEmpleadoEmpleado(String id) {
 		
-		if(primerCliente != null) {
+		if(primerEmpleado != null) {
 			
 			Empleado temporal = (Empleado) primerEmpleado;
 			

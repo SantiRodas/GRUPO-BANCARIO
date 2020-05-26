@@ -29,13 +29,13 @@ public class ControladoraCliente {
 	// ---------------------------------------------------------------------------------------
 	
 	private Lugar lugar;
-	
+		
 	// ---------------------------------------------------------------------------------------
 	
 	public ControladoraCliente() {
 		
 		lugar = new Lugar(null, null, null, null, null);
-		
+				
 	}
 	
 	// ---------------------------------------------------------------------------------------
@@ -78,15 +78,7 @@ public class ControladoraCliente {
     private TextField eliminarTexto;
     
 	// ---------------------------------------------------------------------------------------
-    
-    @FXML
-    private Button informeBoton;
-
-    @FXML
-    private TextField informeTexto;
-    
-    // ---------------------------------------------------------------------------------------
-    
+        
 	@FXML
     private TextField salarioTexto;
 	
@@ -200,7 +192,7 @@ public class ControladoraCliente {
 			Alert alert200 = new Alert(AlertType.WARNING);
 			alert200.setTitle("Atencion");
 			alert200.setHeaderText("No se puede agregar el empleado");
-			alert200.setContentText("Digite la informacion correspondiente");
+			alert200.setContentText("Datos erroneos, intente con otros");
 
 			alert200.showAndWait();
 			
@@ -337,15 +329,6 @@ public class ControladoraCliente {
     }
 		
 	// ---------------------------------------------------------------------------------------
-
-    @FXML
-    public void informe(ActionEvent event) {
-    	
-    	
-
-    }
-    
-    // ---------------------------------------------------------------------------------------
     
     @FXML
     public void calcularTodo(ActionEvent event) throws IOException, ValorIncorrectoExcepcion {
@@ -354,7 +337,7 @@ public class ControladoraCliente {
 			
 			Integer salario = Integer.parseInt(salarioTexto.getText());
 			
-			if(salario > 0) {
+			if(salario >= 100000) {
 				
 				int numeroCuotas = 0;
 				
@@ -418,9 +401,17 @@ public class ControladoraCliente {
 			Alert alert900 = new Alert(Alert.AlertType.ERROR);
     	    alert900.setHeaderText(null);
     	    alert900.setTitle("Error");
-    	    alert900.setContentText("Datos invalidos, intente nuevamente");
+    	    alert900.setContentText("Salario insuficiente, intente con uno mayor");
     	    alert900.showAndWait();
 			
+		} catch(ArithmeticException a2) {
+			
+			Alert alert90045 = new Alert(Alert.AlertType.ERROR);
+    	    alert90045.setHeaderText(null);
+    	    alert90045.setTitle("Error");
+    	    alert90045.setContentText("Seleccione el numero de cuotas");
+    	    alert90045.showAndWait();
+    	    
 		}
 		
     }

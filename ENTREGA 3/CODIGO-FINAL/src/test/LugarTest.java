@@ -34,7 +34,7 @@ class LugarTest {
 	//****************************************************************************
 	//POR FAVOR TENER ABIERTA LA VENTANA CONSOLA PARA VER EL DISEÑO EXTRA DEL TEST
 	//****************************************************************************
-	/*
+	
 	@Test
 	public void lindo() throws InterruptedException {
 			
@@ -85,7 +85,7 @@ class LugarTest {
 		System.out.println("---------------");
 			
 	}
-	*/
+	
 	// ---------------------------------------------------------------------------------------
 	
 	// ESCENARIO NUMERO 1 

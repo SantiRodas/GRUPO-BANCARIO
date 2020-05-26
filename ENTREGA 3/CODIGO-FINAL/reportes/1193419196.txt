@@ -1,0 +1,4 @@
+Prestamo Maximo: 20000000
+Deuda Adquirida: 22000000
+Cuotas Acordadas: 1833333
+Atendido Por: Santiago

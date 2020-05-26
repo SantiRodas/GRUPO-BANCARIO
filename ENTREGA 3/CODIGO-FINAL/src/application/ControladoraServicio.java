@@ -67,14 +67,6 @@ public class ControladoraServicio {
     @FXML
     private Button eliminarBoton;
     
-    // ---------------------------------------------------------------------------------------
-	
-    @FXML
-    private TextField informeTexto;
-
-    @FXML
-    private Button informeBoton;
-    
 	// ---------------------------------------------------------------------------------------
 
     @FXML
@@ -144,7 +136,7 @@ public class ControladoraServicio {
 			Alert alert27 = new Alert(AlertType.WARNING);
 			alert27.setTitle("Atencion");
 			alert27.setHeaderText("No se puede agregar el servicio");
-			alert27.setContentText("Digite la informacion correspondiente");
+			alert27.setContentText("Datos erroneos, intente con otros");
 
 			alert27.showAndWait();
 			
@@ -280,16 +272,7 @@ public class ControladoraServicio {
 		}
     	
     }
-    
-    // ---------------------------------------------------------------------------------------
-    
-    @FXML
-    public void informe(ActionEvent event) {
-
-    	
-    	
-    }
-    
+        
     // ---------------------------------------------------------------------------------------
 
 }

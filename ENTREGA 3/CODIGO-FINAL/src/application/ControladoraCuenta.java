@@ -67,6 +67,20 @@ public class ControladoraCuenta {
     @FXML
     private Button eliminarBoton;
     
+ // ---------------------------------------------------------------------------------------
+    
+    @FXML
+    private Label numerola;
+
+    @FXML
+    private Label valorla1;
+
+    @FXML
+    private Label promediola;
+    
+    @FXML
+    private Button informeBoton;
+    
 	// ---------------------------------------------------------------------------------------
 	
     @FXML
@@ -136,7 +150,7 @@ public class ControladoraCuenta {
 			Alert alert159974 = new Alert(AlertType.WARNING);
 			alert159974.setTitle("Atencion");
 			alert159974.setHeaderText("No se puede agregar la cuenta");
-			alert159974.setContentText("Digite la informacion correspondiente");
+			alert159974.setContentText("Datos erroneos, intente con otros");
 
 			alert159974.showAndWait();
 			
@@ -271,6 +285,31 @@ public class ControladoraCuenta {
 						
 		}
 
+    }
+    
+    // ---------------------------------------------------------------------------------------
+    
+    @FXML
+    public void informe(ActionEvent event) {
+    	
+    	try {
+    		
+    		numerola.setText(Integer.toString(servicio.calcular()));
+        	
+        	valorla1.setText(Integer.toString(servicio.total()));
+        	
+        	promediola.setText(Integer.toString(servicio.promedio()));
+    		
+    	} catch(ArithmeticException ae) {
+    		
+    		Alert alert700 = new Alert(Alert.AlertType.ERROR);
+    	    alert700.setHeaderText(null);
+    	    alert700.setTitle("Error");
+    	    alert700.setContentText("No se puede realizar el informe, no hay datos");
+    	    alert700.showAndWait();
+   
+    	}
+    	
     }
     
     // ---------------------------------------------------------------------------------------

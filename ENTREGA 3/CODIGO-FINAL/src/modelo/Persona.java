@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import excepciones.InformacionExisteExcepcion;
 import excepciones.NoExisteInformacionExcepcion;
 
-public class Persona implements General {
+public class Persona implements General, Especifico {
 	
 	// ---------------------------------------------------------------------------------------
 	
@@ -834,7 +834,52 @@ public class Persona implements General {
 		return false;
 				
 	}
+	
+	// ---------------------------------------------------------------------------------------
+
+	@Override
+	public int calcular() {
+		
+		int total = 0;
+		
+		total = beneficios.size();
+		
+		return total;
+		
+	}
 				
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO PARA CALCULAR EL VALOR DE TODOS LOS BENEFICIOS
+		
+	public int total() {
+		
+		int total = 0;
+			
+		for (int i = 0; i < beneficios.size(); i++) {
+			
+			total = total + beneficios.get(i).getValor();
+			
+		}
+			
+		return total;
+	}
+		
+		
+	// ---------------------------------------------------------------------------------------
+		
+	// METODO PARA CALCULAR EL PROMEDIO DE LOS BENEFICIOS
+		
+	public int promedio() {
+		
+		int beneficio = calcular();
+			
+		int valor = total();
+			
+		return valor / beneficio;
+		
+	}
+	
 	// ---------------------------------------------------------------------------------------
 	
 }
