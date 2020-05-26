@@ -730,7 +730,6 @@ public class ControladoraEmpleado {
 			
 			escritor.println("Cuotas Acordadas: " + cuota);
 			
-			escritor.println("Atendido Por: " + lugar.buscarEmpleadoEmpleado(empleado).getNombre());
 		
 		} catch (IOException e) {
 			

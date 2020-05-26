@@ -1,0 +1,3 @@
+Prestamo Maximo: 40000000
+Deuda Adquirida: 44000000
+Cuotas Acordadas: 1833333
