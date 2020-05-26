@@ -27,6 +27,8 @@ import javafx.scene.media.MediaView;
 
 public class Controladora {
 	
+	// ---------------------------------------------------------------------------------------
+	
 	ControladoraBanco controladoraBanco = new ControladoraBanco();
 	
 	ControladoraSucursal controladoraSucursal = new ControladoraSucursal();
@@ -40,6 +42,8 @@ public class Controladora {
 	ControladoraCuenta controladoraCuenta = new ControladoraCuenta();
 	
 	ControladoraEps controladoraEps = new ControladoraEps();
+	
+	ControladoraBeneficio controladoraBeneficio = new ControladoraBeneficio();
 	
 	@FXML
     private BorderPane panelPrincipal;
@@ -159,7 +163,7 @@ public class Controladora {
 	@FXML
     public void eliminarSucursal(ActionEvent event) throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("sucursalPantalla.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("sucursalPantalla1.fxml"));
 		
 		fxmlLoader.setController(controladoraSucursal);    
 		
@@ -170,30 +174,13 @@ public class Controladora {
     	panelPrincipal.setTop(addContactPane);
 		
     }
-	
-	//*********************************************************************
-	
-	@FXML
-    public void moverSucursal(ActionEvent event) throws IOException {
-
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("sucursalPantalla.fxml"));
 		
-		fxmlLoader.setController(controladoraSucursal);    
-		
-		Parent addContactPane = fxmlLoader.load();
-    	
-		panelPrincipal.getChildren().clear();
-		
-    	panelPrincipal.setTop(addContactPane);
-		
-    }
-	
 	//*********************************************************************
 	
 	@FXML
     public void informeSucursal(ActionEvent event) throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("sucursalPantalla.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("sucursalPantalla2.fxml"));
 		
 		fxmlLoader.setController(controladoraSucursal);    
 		
@@ -244,7 +231,7 @@ public class Controladora {
 	@FXML
     public void eliminarServicio(ActionEvent event) throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("servicioPantalla.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("servicioPantalla1.fxml"));
 		
 		fxmlLoader.setController(controladoraServicio);    
 		
@@ -261,7 +248,7 @@ public class Controladora {
 	@FXML
     public void informeServicio(ActionEvent event) throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("servicioPantalla.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("servicioPantalla2.fxml"));
 		
 		fxmlLoader.setController(controladoraServicio);    
 		
@@ -286,61 +273,10 @@ public class Controladora {
     	
 		panelPrincipal.getChildren().clear();
 		
-    	panelPrincipal.setTop(addContactPane);
+    	panelPrincipal.setCenter(addContactPane);
 		
     }
-	
-	//*********************************************************************
-	
-	@FXML
-    public void asignarBeneficioEmpleado(ActionEvent event) throws IOException {
-
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("empleadoPantalla.fxml"));
-		
-		fxmlLoader.setController(controladoraEmpleado);    
-		
-		Parent addContactPane = fxmlLoader.load();
-    	
-		panelPrincipal.getChildren().clear();
-		
-    	panelPrincipal.setTop(addContactPane);
-		
-    }
-	
-	//*********************************************************************
-	
-	@FXML
-    public void asignarEpsEmpleado(ActionEvent event) throws IOException {
-
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("empleadoPantalla.fxml"));
-		
-		fxmlLoader.setController(controladoraEmpleado);    
-		
-		Parent addContactPane = fxmlLoader.load();
-    	
-		panelPrincipal.getChildren().clear();
-		
-    	panelPrincipal.setTop(addContactPane);
-		
-    }
-	
-	//*********************************************************************
-	
-	@FXML
-    public void cambiarEpsEmpleado(ActionEvent event) throws IOException {
-
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("empleadoPantalla.fxml"));
-		
-		fxmlLoader.setController(controladoraEmpleado);    
-		
-		Parent addContactPane = fxmlLoader.load();
-    	
-		panelPrincipal.getChildren().clear();
-		
-    	panelPrincipal.setTop(addContactPane);
-		
-    }
-	
+				
 	//*********************************************************************
 	
 	@FXML
@@ -354,7 +290,7 @@ public class Controladora {
     	
 		panelPrincipal.getChildren().clear();
 		
-    	panelPrincipal.setTop(addContactPane);
+    	panelPrincipal.setCenter(addContactPane);
 		
     }
 	
@@ -363,7 +299,7 @@ public class Controladora {
 	@FXML
     public void eliminarEmpleado(ActionEvent event) throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("empleadoPantalla.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("empleadoPantalla1.fxml"));
 		
 		fxmlLoader.setController(controladoraEmpleado);    
 		
@@ -371,41 +307,7 @@ public class Controladora {
     	
 		panelPrincipal.getChildren().clear();
 		
-    	panelPrincipal.setTop(addContactPane);
-		
-    }
-	
-	//*********************************************************************
-	
-	@FXML
-    public void moverBancoEmpleado(ActionEvent event) throws IOException {
-
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("empleadoPantalla.fxml"));
-		
-		fxmlLoader.setController(controladoraEmpleado);    
-		
-		Parent addContactPane = fxmlLoader.load();
-    	
-		panelPrincipal.getChildren().clear();
-		
-    	panelPrincipal.setTop(addContactPane);
-		
-    }
-	
-	//*********************************************************************
-	
-	@FXML
-    public void moverSucursalEmpleado(ActionEvent event) throws IOException {
-
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("empleadoPantalla.fxml"));
-		
-		fxmlLoader.setController(controladoraEmpleado);    
-		
-		Parent addContactPane = fxmlLoader.load();
-    	
-		panelPrincipal.getChildren().clear();
-		
-    	panelPrincipal.setTop(addContactPane);
+    	panelPrincipal.setCenter(addContactPane);
 		
     }
 	
@@ -414,7 +316,7 @@ public class Controladora {
 	@FXML
     public void informeEmpleado(ActionEvent event) throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("empleadoPantalla.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("empleadoPantalla2.fxml"));
 		
 		fxmlLoader.setController(controladoraEmpleado);    
 		
@@ -422,7 +324,7 @@ public class Controladora {
     	
 		panelPrincipal.getChildren().clear();
 		
-    	panelPrincipal.setTop(addContactPane);
+    	panelPrincipal.setCenter(addContactPane);
 		
     }
 	
@@ -431,7 +333,7 @@ public class Controladora {
 	@FXML
     public void liquidarEmpleado(ActionEvent event) throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("empleadoPantalla.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("empleadoPantalla3.fxml"));
 		
 		fxmlLoader.setController(controladoraEmpleado);    
 		
@@ -439,16 +341,7 @@ public class Controladora {
     	
 		panelPrincipal.getChildren().clear();
 		
-    	panelPrincipal.setTop(addContactPane);
-		
-    }
-	
-	//*********************************************************************
-	
-	@FXML
-    public void dineroEmpleado(ActionEvent event) throws IOException {
-
-		
+    	panelPrincipal.setCenter(addContactPane);
 		
     }
 	
@@ -457,7 +350,7 @@ public class Controladora {
 	@FXML
     public void prestamoEmpleado(ActionEvent event) throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("empleadoPantalla.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("requerimiento.fxml"));
 		
 		fxmlLoader.setController(controladoraEmpleado);    
 		
@@ -465,7 +358,7 @@ public class Controladora {
     	
 		panelPrincipal.getChildren().clear();
 		
-    	panelPrincipal.setTop(addContactPane);
+    	panelPrincipal.setCenter(addContactPane);
 		
     }
 	
@@ -482,27 +375,10 @@ public class Controladora {
     	
 		panelPrincipal.getChildren().clear();
 		
-    	panelPrincipal.setTop(addContactPane);
+    	panelPrincipal.setCenter(addContactPane);
 		
     }
-	
-	//*********************************************************************
-	
-	@FXML
-    public void asignarBeneficioCliente(ActionEvent event) throws IOException {
-
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("clientePantalla.fxml"));
 		
-		fxmlLoader.setController(controladoraCliente);    
-		
-		Parent addContactPane = fxmlLoader.load();
-    	
-		panelPrincipal.getChildren().clear();
-		
-    	panelPrincipal.setTop(addContactPane);
-		
-    }
-	
 	//*********************************************************************
 	
 	@FXML
@@ -516,7 +392,7 @@ public class Controladora {
     	
 		panelPrincipal.getChildren().clear();
 		
-    	panelPrincipal.setTop(addContactPane);
+    	panelPrincipal.setCenter(addContactPane);
 		
     }
 	
@@ -525,7 +401,7 @@ public class Controladora {
 	@FXML
     public void eliminarCliente(ActionEvent event) throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("clientePantalla.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("clientePantalla1.fxml"));
 		
 		fxmlLoader.setController(controladoraCliente);    
 		
@@ -533,24 +409,7 @@ public class Controladora {
     	
 		panelPrincipal.getChildren().clear();
 		
-    	panelPrincipal.setTop(addContactPane);
-		
-    }
-	
-	//*********************************************************************
-	
-	@FXML
-    public void moverBancoCliente(ActionEvent event) throws IOException {
-
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("clientePantalla.fxml"));
-		
-		fxmlLoader.setController(controladoraCliente);    
-		
-		Parent addContactPane = fxmlLoader.load();
-    	
-		panelPrincipal.getChildren().clear();
-		
-    	panelPrincipal.setTop(addContactPane);
+    	panelPrincipal.setCenter(addContactPane);
 		
     }
 	
@@ -559,7 +418,7 @@ public class Controladora {
 	@FXML
     public void informeCliente(ActionEvent event) throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("clientePantalla.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("clientePantalla2.fxml"));
 		
 		fxmlLoader.setController(controladoraCliente);    
 		
@@ -567,19 +426,10 @@ public class Controladora {
     	
 		panelPrincipal.getChildren().clear();
 		
-    	panelPrincipal.setTop(addContactPane);
+    	panelPrincipal.setCenter(addContactPane);
 		
     }
-	
-	//*********************************************************************
-	
-	@FXML
-    public void dineroCliente(ActionEvent event) throws IOException {
 
-		
-		
-    }
-	
 	//*********************************************************************
 	
 	@FXML
@@ -593,7 +443,7 @@ public class Controladora {
     	
 		panelPrincipal.getChildren().clear();
 		
-    	panelPrincipal.setTop(addContactPane);
+    	panelPrincipal.setCenter(addContactPane);
 		
     }
 	
@@ -610,7 +460,7 @@ public class Controladora {
     	
 		panelPrincipal.getChildren().clear();
 		
-    	panelPrincipal.setTop(addContactPane);
+    	panelPrincipal.setCenter(addContactPane);
 		
     }
 	
@@ -627,7 +477,7 @@ public class Controladora {
     	
 		panelPrincipal.getChildren().clear();
 		
-    	panelPrincipal.setTop(addContactPane);
+    	panelPrincipal.setCenter(addContactPane);
 		
     }
 	
@@ -636,7 +486,7 @@ public class Controladora {
 	@FXML
     public void eliminarCuenta(ActionEvent event) throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("cuentaPantalla.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("cuentaPantalla1.fxml"));
 		
 		fxmlLoader.setController(controladoraCuenta);    
 		
@@ -644,7 +494,7 @@ public class Controladora {
     	
 		panelPrincipal.getChildren().clear();
 		
-    	panelPrincipal.setTop(addContactPane);
+    	panelPrincipal.setCenter(addContactPane);
 		
     }
 	
@@ -661,7 +511,7 @@ public class Controladora {
     	
 		panelPrincipal.getChildren().clear();
 		
-    	panelPrincipal.setTop(addContactPane);
+    	panelPrincipal.setCenter(addContactPane);
 		
     }
 	
@@ -678,8 +528,76 @@ public class Controladora {
     	
 		panelPrincipal.getChildren().clear();
 		
-    	panelPrincipal.setTop(addContactPane);
+    	panelPrincipal.setCenter(addContactPane);
 		
+    }
+	
+	//*********************************************************************
+	
+	@FXML
+    public void eliminarEps(ActionEvent event) throws IOException {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("epsPantalla1.fxml"));
+		
+		fxmlLoader.setController(controladoraEps);    
+		
+		Parent addContactPane = fxmlLoader.load();
+    	
+		panelPrincipal.getChildren().clear();
+		
+    	panelPrincipal.setCenter(addContactPane);
+		
+    }
+	
+	// ---------------------------------------------------------------------------------------
+	
+	@FXML
+    public void agregarBeneficio(ActionEvent event) throws IOException {
+		
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("agregarBeneficio.fxml"));
+		
+		fxmlLoader.setController(controladoraBeneficio);    
+		
+		Parent addContactPane = fxmlLoader.load();
+    	
+		panelPrincipal.getChildren().clear();
+		
+    	panelPrincipal.setCenter(addContactPane);
+
+    }
+	
+	//*********************************************************************
+	
+	@FXML
+    public void buscarBeneficio(ActionEvent event) throws IOException {
+		
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("beneficioPantalla.fxml"));
+		
+		fxmlLoader.setController(controladoraBeneficio);    
+		
+		Parent addContactPane = fxmlLoader.load();
+    	
+		panelPrincipal.getChildren().clear();
+		
+    	panelPrincipal.setCenter(addContactPane);
+
+    }
+	
+	//*********************************************************************
+	
+	@FXML
+    public void eliminarBeneficio(ActionEvent event) throws IOException {
+		
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("beneficioPantalla1.fxml"));
+		
+		fxmlLoader.setController(controladoraBeneficio);    
+		
+		Parent addContactPane = fxmlLoader.load();
+    	
+		panelPrincipal.getChildren().clear();
+		
+    	panelPrincipal.setCenter(addContactPane);
+
     }
 	
 	// ---------------------------------------------------------------------------------------

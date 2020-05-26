@@ -9,7 +9,6 @@
 package modelo;
 
 import java.util.ArrayList;
-
 import excepciones.InformacionExisteExcepcion;
 import excepciones.NoExisteInformacionExcepcion;
 
@@ -277,6 +276,41 @@ public class Servicio implements General {
 				
 		}
 			
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO BINARIO DE BUSQUEDA
+	
+	public boolean busquedaBinaria(String id) {
+				
+		int inicio = 0;
+		int fin = cuentas.size() - 1;
+		int posicion;
+		
+		while(inicio <= fin) {
+			
+			posicion = (inicio + fin) / 2;
+			
+			if(cuentas.get(posicion).getId().equalsIgnoreCase(id)) {
+				
+				return true;
+					
+			} else if(cuentas.get(posicion).getId().compareTo(id) <= 0) {
+				
+				inicio = posicion + 1;
+				
+			} else {
+				
+				fin = posicion + 1;
+				
+			}
+			
+			
+		}
+		
+		return false;
+		
 	}
 		
 	// ---------------------------------------------------------------------------------------

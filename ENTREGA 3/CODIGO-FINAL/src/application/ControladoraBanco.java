@@ -9,6 +9,7 @@
 package application;
 
 import excepciones.InformacionExisteExcepcion;
+import excepciones.InformacionVacia;
 import excepciones.NoExisteInformacionExcepcion;
 import hilos.CuadradoHilo;
 import hilos.LineaHilo;
@@ -91,7 +92,7 @@ public class ControladoraBanco {
 	// ---------------------------------------------------------------------------------------
 	
 	@FXML
-    public void agregar(ActionEvent event) throws InformacionExisteExcepcion, InterruptedException {
+    public void agregar(ActionEvent event) throws InformacionExisteExcepcion, InterruptedException, InformacionVacia {
 		
 		CuadradoHilo ch = new CuadradoHilo(true, this);
 		
@@ -103,10 +104,18 @@ public class ControladoraBanco {
 			
 			String id = idBancoTexto.getText();
 			
-			controladora.agregar(nombre, id);
-			
-			ch.start();
-									
+			if(nombre.isEmpty() == false && id.isEmpty() == false) {
+				
+				controladora.agregar(nombre, id);
+				
+				ch.start();
+				
+			} else {
+				
+				throw new InformacionVacia("INFORMACION VACIA, POR FAVOR LLENE LOS CAMPOS");
+				
+			}
+								
 		} catch(InformacionExisteExcepcion ejemplo) {
 			
 			Alert alert1 = new Alert(AlertType.ERROR);
@@ -118,7 +127,11 @@ public class ControladoraBanco {
 			
 			ch.setValidacion(false);
 			
-		} catch(NullPointerException ejemplo1) {
+			nombreBancoTexto.setText(null);
+			
+			idBancoTexto.setText(null);
+			
+		} catch(InformacionVacia ejemplo1) {
 			
 			Alert alert2 = new Alert(AlertType.WARNING);
 			alert2.setTitle("Atencion");
@@ -129,7 +142,16 @@ public class ControladoraBanco {
 			
 			ch.setValidacion(false);
 			
-		} 
+		} catch(NullPointerException a2) {
+			
+			Alert alert3 = new Alert(AlertType.WARNING);
+			alert3.setTitle("Atencion");
+			alert3.setHeaderText("No se puede agregar el banco");
+			alert3.setContentText("Digite la informacion correspondiente");
+
+			alert3.showAndWait();
+			
+		}
 		
     }
 	
@@ -153,54 +175,83 @@ public class ControladoraBanco {
 	@FXML
 	public void mensaje() {
 		
-		Alert alert3 = new Alert(AlertType.INFORMATION);
-		alert3.setTitle("Informacion importante");
-		alert3.setHeaderText(null);
-		alert3.setContentText("Banco agregado correctamente");
+		Alert alert4 = new Alert(AlertType.INFORMATION);
+		alert4.setTitle("Informacion importante");
+		alert4.setHeaderText(null);
+		alert4.setContentText("Banco agregado correctamente");
 
-		alert3.showAndWait();
+		alert4.showAndWait();
+		
+		nombreBancoTexto.setText(null);
+		
+		idBancoTexto.setText(null);
 		
 	}
 	
 	// ---------------------------------------------------------------------------------------
 	
 	@FXML
-    public void buscar(ActionEvent event) {
+    public void buscar(ActionEvent event) throws InformacionVacia {
+		
+		nombrela.setText("...");
+		
+		idla.setText("...");
 		
 		try {
 			
 			String id = buscarTexto.getText();
 			
-			if(controladora.buscar(id) == true) {
+			if(id.isEmpty() == false) {
 				
-				nombrela.setText(controladora.buscarBanco(id).getNombre());
-				
-				idla.setText(controladora.buscarBanco(id).getId());
+				if(controladora.buscar(id) == true) {
+					
+					nombrela.setText(controladora.buscarBanco(id).getNombre());
+					
+					idla.setText(controladora.buscarBanco(id).getId());
+					
+					buscarTexto.setText(null);
+					
+				} else {
+					
+					buscarTexto.setText(null);
+					
+					throw new NoExisteInformacionExcepcion("LA INFORMACION BUSCADA NO EXISTE EN EL PROGRAMA");
+					
+				}
 				
 			} else {
 				
-				throw new NoExisteInformacionExcepcion("LA INFORMACION BUSCADA NO EXISTE EN EL PROGRAMA");
+				throw new InformacionVacia("INFORMACION VACIA, POR FAVOR LLENE LOS CAMPOS");
 				
 			}
 			
 		} catch(NoExisteInformacionExcepcion a1) {
 			
-			Alert alert4 = new Alert(AlertType.ERROR);
-			alert4.setTitle("Error");
-			alert4.setHeaderText("No se puede buscar el banco");
-			alert4.setContentText("Esta informacion no existe en el sistema");
-
-			alert4.showAndWait();
-			
-		} catch(NullPointerException a2) {
-			
-			Alert alert5 = new Alert(AlertType.WARNING);
-			alert5.setTitle("Atencion");
+			Alert alert5 = new Alert(AlertType.ERROR);
+			alert5.setTitle("Error");
 			alert5.setHeaderText("No se puede buscar el banco");
-			alert5.setContentText("Digite la informacion correspondiente");
+			alert5.setContentText("Esta informacion no existe en el sistema");
 
 			alert5.showAndWait();
 			
+		} catch(NullPointerException a2) {
+			
+			Alert alert6 = new Alert(AlertType.WARNING);
+			alert6.setTitle("Atencion");
+			alert6.setHeaderText("No se puede buscar el banco");
+			alert6.setContentText("Digite la informacion correspondiente");
+
+			alert6.showAndWait();
+			
+		} catch(InformacionVacia ejemplo1) {
+			
+			Alert alert7 = new Alert(AlertType.WARNING);
+			alert7.setTitle("Atencion");
+			alert7.setHeaderText("No se puede buscar el banco");
+			alert7.setContentText("Digite la informacion correspondiente");
+
+			alert7.showAndWait();
+						
 		}
 
     }
@@ -208,40 +259,61 @@ public class ControladoraBanco {
 	// ---------------------------------------------------------------------------------------
 	
 	@FXML
-    public void eliminarBanco(ActionEvent event) throws NoExisteInformacionExcepcion {
+    public void eliminarBanco(ActionEvent event) throws NoExisteInformacionExcepcion, InformacionVacia {
 		
 		try {
 			
 			String id = eliminarTexto.getText();
 			
-			controladora.eliminar(id);
-			
-			Alert alert6 = new Alert(AlertType.INFORMATION);
-			alert6.setTitle("Informacion importante");
-			alert6.setHeaderText(null);
-			alert6.setContentText("Banco eliminado correctamente");
-
-			alert6.showAndWait();
+			if(id.isEmpty() == false) {
+				
+				controladora.eliminar(id);
+				
+				Alert alert8 = new Alert(AlertType.INFORMATION);
+				alert8.setTitle("Informacion importante");
+				alert8.setHeaderText(null);
+				alert8.setContentText("Banco eliminado correctamente");
+				
+				alert8.showAndWait();
+				
+				eliminarTexto.setText(null);
+				
+			} else {
+				
+				throw new InformacionVacia("INFORMACION VACIA, POR FAVOR LLENE LOS CAMPOS");
+				
+			}
 			
 		} catch(NullPointerException e) {
 			
-			Alert alert7 = new Alert(AlertType.WARNING);
-			alert7.setTitle("Atencion");
-			alert7.setHeaderText("No se puede eliminar el banco");
-			alert7.setContentText("Digite la informacion correspondiente");
+			Alert alert9 = new Alert(AlertType.WARNING);
+			alert9.setTitle("Atencion");
+			alert9.setHeaderText("No se puede eliminar el banco");
+			alert9.setContentText("Digite la informacion correspondiente");
 
-			alert7.showAndWait();
+			alert9.showAndWait();
 			
 		} catch(NoExisteInformacionExcepcion e1) {
 			
-			Alert alert8 = new Alert(AlertType.ERROR);
-			alert8.setTitle("Error");
-			alert8.setHeaderText("No se puede eliminar el banco");
-			alert8.setContentText("Esta informacion no existe en el sistema");
+			Alert alert10 = new Alert(AlertType.ERROR);
+			alert10.setTitle("Error");
+			alert10.setHeaderText("No se puede eliminar el banco");
+			alert10.setContentText("Esta informacion no existe en el sistema");
 
-			alert8.showAndWait();
+			alert10.showAndWait();
 			
-		} 
+			eliminarTexto.setText(null);
+			
+		} catch(InformacionVacia ejemplo1) {
+			
+			Alert alert11 = new Alert(AlertType.WARNING);
+			alert11.setTitle("Atencion");
+			alert11.setHeaderText("No se puede eliminar el banco");
+			alert11.setContentText("Digite la informacion correspondiente");
+
+			alert11.showAndWait();
+						
+		}
 		
     }
 	

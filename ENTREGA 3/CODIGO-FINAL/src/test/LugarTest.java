@@ -13,6 +13,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import excepciones.InformacionExisteExcepcion;
+import excepciones.Mayor183Excepcion;
+import excepciones.Mayor365Excepcion;
 import excepciones.NoExisteInformacionExcepcion;
 import modelo.Lugar;
 
@@ -32,7 +34,7 @@ class LugarTest {
 	//****************************************************************************
 	//POR FAVOR TENER ABIERTA LA VENTANA CONSOLA PARA VER EL DISEÑO EXTRA DEL TEST
 	//****************************************************************************
-		
+	/*
 	@Test
 	public void lindo() throws InterruptedException {
 			
@@ -83,7 +85,7 @@ class LugarTest {
 		System.out.println("---------------");
 			
 	}
-	
+	*/
 	// ---------------------------------------------------------------------------------------
 	
 	// ESCENARIO NUMERO 1 
@@ -347,6 +349,78 @@ class LugarTest {
 		lugar.eliminarEmpleado("123");
 		
 		assertFalse(lugar.buscarEmpleado("123"));
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	@Test
+	public void calcularMaximoTest() {
+		
+		setup1();
+		
+		assertEquals(lugar.calcularMaximo(1000000), 20000000);
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	@Test
+	public void calcularDeudaTest() {
+		
+		setup1();
+		
+		assertEquals(lugar.calcularDeuda(1000000), 1100000);
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	@Test
+	public void calcularCuotaTest() {
+		
+		setup1();
+		
+		assertEquals(lugar.calcularCuota(2200000, 12), 183333);
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	@Test
+	public void cesantiasTest() throws Mayor365Excepcion {
+		
+		setup1();
+		
+		assertEquals(1000000, lugar.calcularCesantias(1000000, 365));
+		
+		assertEquals(501237, lugar.calcularCesantias(1000000, 183));
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	@Test
+	public void primaTest() throws Mayor183Excepcion {
+		
+		setup1();
+		
+		assertEquals(500000, lugar.calcularPrima(1000000, 183));
+		
+		assertEquals(273200, lugar.calcularPrima(1000000, 100));
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	@Test
+	public void vacacionesTest() throws Mayor365Excepcion {
+		
+		setup1();
+		
+		assertEquals(500000, lugar.calcularVacaciones(1000000, 365));
+		
+		assertEquals(250527, lugar.calcularVacaciones(1000000, 183));
 		
 	}
 	

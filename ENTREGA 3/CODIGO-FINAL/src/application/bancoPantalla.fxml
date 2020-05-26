@@ -41,7 +41,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="idla" layoutX="407.0" layoutY="384.0" text="..." textFill="WHITE">
+      <Label fx:id="idla" layoutX="412.0" layoutY="384.0" text="..." textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>

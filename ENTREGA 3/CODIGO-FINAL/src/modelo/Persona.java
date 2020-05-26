@@ -768,4 +768,73 @@ public class Persona implements General {
 	
 	// ---------------------------------------------------------------------------------------
 	
+	// METODO BINARIO DE BUSQUEDA
+	
+	public boolean busquedaBinariaSeguro(String nombre) {
+					
+		int inicio = 0;
+		int fin = seguros.size() - 1;
+		int posicion;
+			
+		while(inicio <= fin) {
+			
+			posicion = (inicio + fin) / 2;
+				
+			if(seguros.get(posicion).getNombre().equalsIgnoreCase(nombre)) {
+					
+				return true;
+						
+			} else if(seguros.get(posicion).getNombre().compareTo(nombre) <= 0) {
+					
+				inicio = posicion + 1;
+					
+			} else {
+					
+				fin = posicion + 1;
+					
+			}
+				
+				
+		}
+			
+		return false;
+			
+	}
+			
+	// ---------------------------------------------------------------------------------------
+	
+	// METODO BINARIO DE BUSQUEDA
+	
+	public boolean busquedaBinariaBeneficio(int valor) {
+						
+		int inicio = 0;
+		int fin = beneficios.size() - 1;
+		int posicion;
+				
+		while(inicio <= fin) {
+				
+			posicion = (inicio + fin) / 2;
+					
+			if(beneficios.get(posicion).getValor() == valor) {
+						
+				return true;
+							
+			} else if(beneficios.get(posicion).getValor() < 0) {
+						
+				inicio = posicion + 1;
+						
+			} else {
+						
+				fin = posicion + 1;
+						
+			}
+						
+		}
+				
+		return false;
+				
+	}
+				
+	// ---------------------------------------------------------------------------------------
+	
 }

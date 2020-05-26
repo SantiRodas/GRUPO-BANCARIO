@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="486.0" prefWidth="717.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="37.0" layoutY="14.0" text="Salario mensual:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="salarioLiquidacionTexto" layoutX="203.0" layoutY="15.0" />
+      <Button fx:id="liquidarBoton" layoutX="156.0" layoutY="243.0" mnemonicParsing="false" onAction="#liquidar" text="Realizar">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Label layoutX="38.0" layoutY="89.0" text="Dias trabajados:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="15.0" layoutY="161.0" text="Dias faltantes (prima):">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="trabajoTexto" layoutX="203.0" layoutY="90.0" />
+      <TextField fx:id="faltaTexto" layoutX="203.0" layoutY="162.0" />
+      <Label layoutX="442.0" layoutY="15.0" text="Cesantias:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="456.0" layoutY="89.0" text="Prima:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="435.0" layoutY="161.0" text="Vacaciones:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="459.0" layoutY="244.0" text="Total:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="cesantiasla" layoutX="605.0" layoutY="15.0" text="...">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="primala" layoutX="605.0" layoutY="89.0" text="...">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="vacacionesla" layoutX="605.0" layoutY="161.0" text="...">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="totalla" layoutX="605.0" layoutY="244.0" text="...">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Rectangle fx:id="cuadrado1" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="120.0" layoutX="299.0" layoutY="313.0" stroke="BLACK" strokeType="INSIDE" width="120.0" />
+      <Circle fill="#ffffff00" layoutX="359.0" layoutY="373.0" radius="54.0" stroke="BLACK" strokeType="INSIDE" />
+      <Rectangle fx:id="cuadrado2" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="75.0" layoutX="322.0" layoutY="336.0" stroke="BLACK" strokeType="INSIDE" width="75.0" />
+   </children>
+</Pane>

@@ -25,7 +25,6 @@
                   <MenuItem mnemonicParsing="false" onAction="#agregarSucursal" text="Agregar" />
                   <MenuItem mnemonicParsing="false" onAction="#buscarSucursal" text="Buscar" />
                   <MenuItem mnemonicParsing="false" onAction="#eliminarSucursal" text="Eliminar" />
-                  <MenuItem mnemonicParsing="false" onAction="#moverSucursal" text="Mover" />
                   <MenuItem mnemonicParsing="false" onAction="#informeSucursal" text="Informe" />
                </items>
             </Menu>
@@ -40,28 +39,19 @@
             <Menu mnemonicParsing="false" text="Empleado">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#agregarEmpleado" text="Agregar" />
-                  <MenuItem mnemonicParsing="false" onAction="#asignarBeneficioEmpleado" text="Asignar beneficio" />
-                  <MenuItem mnemonicParsing="false" onAction="#asignarEpsEmpleado" text="Asignar eps" />
-                  <MenuItem mnemonicParsing="false" onAction="#cambiarEpsEmpleado" text="Cambiar eps" />
                   <MenuItem mnemonicParsing="false" onAction="#buscarEmpleado" text="Buscar" />
                   <MenuItem mnemonicParsing="false" onAction="#eliminarEmpleado" text="Eliminar" />
-                  <MenuItem mnemonicParsing="false" onAction="#moverBancoEmpleado" text="Mover a banco" />
-                  <MenuItem mnemonicParsing="false" onAction="#moverSucursalEmpleado" text="Mover a sucursal" />
                   <MenuItem mnemonicParsing="false" onAction="#informeEmpleado" text="Informe" />
                   <MenuItem mnemonicParsing="false" onAction="#liquidarEmpleado" text="Liquidar" />
-                  <MenuItem mnemonicParsing="false" onAction="#dineroEmpleado" text="Dinero" />
                   <MenuItem mnemonicParsing="false" onAction="#prestamoEmpleado" text="Prestamo" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Cliente">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#agregarCliente" text="Agregar" />
-                  <MenuItem mnemonicParsing="false" onAction="#asignarBeneficioCliente" text="Asignar beneficio" />
                   <MenuItem mnemonicParsing="false" onAction="#buscarCliente" text="Buscar" />
                   <MenuItem mnemonicParsing="false" onAction="#eliminarCliente" text="Eliminar" />
-                  <MenuItem mnemonicParsing="false" onAction="#moverBancoCliente" text="Mover a banco" />
                   <MenuItem mnemonicParsing="false" onAction="#informeCliente" text="Informe" />
-                  <MenuItem mnemonicParsing="false" onAction="#dineroCliente" text="Dinero" />
                   <MenuItem mnemonicParsing="false" onAction="#prestamoCliente" text="Prestamo" />
                </items>
             </Menu>
@@ -76,6 +66,14 @@
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#agregarEps" text="Agregar" />
                   <MenuItem mnemonicParsing="false" onAction="#buscarEps" text="Buscar" />
+                  <MenuItem mnemonicParsing="false" onAction="#eliminarEps" text="Eliminar" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Beneficio">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#agregarBeneficio" text="Agregar" />
+                  <MenuItem mnemonicParsing="false" onAction="#buscarBeneficio" text="Buscar" />
+                  <MenuItem mnemonicParsing="false" onAction="#eliminarBeneficio" text="Eliminar" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Extra">

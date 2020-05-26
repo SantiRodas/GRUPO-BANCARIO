@@ -9,6 +9,8 @@
 package modelo;
 
 import excepciones.InformacionExisteExcepcion;
+import excepciones.Mayor183Excepcion;
+import excepciones.Mayor365Excepcion;
 import excepciones.NoExisteInformacionExcepcion;
 
 public class Lugar implements General {
@@ -498,6 +500,117 @@ public class Lugar implements General {
 			return eliminarEmpleadoRecursivo(id, (Empleado) nodo.getSiguiente(), anterior);
 			
 		}
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	public int calcularMaximo(int valor) {
+		
+		int retorno = 0;
+		
+		retorno = (valor / 50000) * 1000000;
+		
+		return retorno;
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	public int calcularDeuda(int valor1) {
+		
+		int retorno1 = 0;
+		
+		retorno1 = (int) (valor1 + (valor1 * 0.1));
+		
+		return retorno1;
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	public int calcularCuota(int valor2, int cuotas) {
+		
+		int retorno2 = 0;
+		
+		retorno2 = valor2 / cuotas;
+		
+		return retorno2;
+		
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	public int calcularCesantias(int salario, int dias) throws Mayor365Excepcion {
+		
+		int total = 0;
+		
+		if(dias >= 365) {
+			
+			total = salario;
+			
+		} else if( dias < 365) {
+			
+			total = ((salario / 365) * dias);
+			
+		} else {
+			
+			throw new Mayor365Excepcion("EL NUMERO DE DIAS NO ES CORRECTO");
+			
+		}
+		
+		return total;
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	public int calcularPrima(int salario, int dias) throws Mayor183Excepcion {
+		
+		int total = 0;
+		
+		if(dias == 183) {
+			
+			total = salario / 2;
+			
+		} else if(dias < 183) {
+			
+			int salario2 = salario / 2;
+			
+			total = ((salario2 / 183) * dias);
+			
+		} else {
+			
+			throw new Mayor183Excepcion("EL NUMERO DE DIAS NO ES CORRECTO");
+			
+		}
+		
+		return total;
+	}
+	
+	// ---------------------------------------------------------------------------------------
+	
+	public int calcularVacaciones(int salario, int dias) throws Mayor365Excepcion {
+		
+		int total = 0;
+		
+		if(dias == 365) {
+			
+			total = (salario / 2);
+			
+		} else if(dias < 365) {
+			
+			int salario2 = salario / 2;
+			
+			total = ((salario2 / 365) * dias);
+			
+		} else {
+			
+			throw new Mayor365Excepcion("EL NUMERO DE DIAS NO ES CORRECTO");
+			
+		}
+		
+		
+		return total;
 		
 	}
 	

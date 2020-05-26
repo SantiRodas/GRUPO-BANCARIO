@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="448.0" prefWidth="658.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="180.0" layoutY="48.0" text="Nombre: ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="202.0" layoutY="128.0" text="Id: ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="170.0" layoutY="211.0" text="Contraseña:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="191.0" layoutY="298.0" text="Valor: ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nombreBeneficio" layoutX="339.0" layoutY="48.0" />
+      <TextField fx:id="idBeneficio" layoutX="339.0" layoutY="128.0" />
+      <TextField fx:id="claveBeneficio" layoutX="339.0" layoutY="211.0" />
+      <TextField fx:id="valorBeneficio" layoutX="339.0" layoutY="298.0" />
+      <Button fx:id="agregarBoton" layoutX="284.0" layoutY="375.0" mnemonicParsing="false" onAction="#agregar" text="Agregar" />
+   </children>
+</Pane>
