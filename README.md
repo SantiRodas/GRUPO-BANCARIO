@@ -27,10 +27,6 @@ Este programa funcional permite agregar, buscar y eliminar diferentes elementos 
 
 * https://github.com/SantiRodas/GRUPO-BANCARIO/blob/master/ENTREGA%202/RODAS_Y_RIVERA.pdf
 
-3. Desarrollo
-
-* https://www.youtube.com/watch?v=_Gi2qNZAXCQ&t=4s
-
 ## Pruebas unitarias
 
 Se tiene implementado Test en las siguientes clases:
