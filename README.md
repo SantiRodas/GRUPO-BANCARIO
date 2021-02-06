@@ -1,35 +1,35 @@
-# Grupo bancario
+# Banking group
 
-Este programa funcional permite agregar, buscar y eliminar diferentes elementos como bancos, sucursales, clientes, servicios y cuentas. Ademas, tambien liquida a los empleados con todas las implementaciones de la ley, dando la opcion de prestar un dinero maximo tomando en cuenta su salario mensual. 
+This functional program allows you to add, search and delete different elements such as banks, branches, clients, services and accounts. In addition, it also liquidates employees with all the implementations of the law, giving the option of lending a maximum money taking into account their monthly salary.
 
-## Requisitos del programa
+## Program requirements
 
-- Software de Java instalado.
-- Eclipse funcional.
+- Java software installed.
+- Eclipse functional.
 - JavaFx
 
-## Utilizar el programa
+## Use the program
 
-- Clonar el repositorio
-- Acceder a la carpeta "Entrega 3"
-- Importar el proyecto "Codigo final" en Eclipse
-- Ejecutar la clase Main del paquete application
+- Clone the repository
+- Access the folder "Delivery 3"
+- Import the project "Final code" in Eclipse
+- Execute the Main class of the application package
 
-## Etapas de construccion
+## Stages of construction
 
-1. Analisis :
+1. Analysis:
 
 * https://github.com/SantiRodas/GRUPO-BANCARIO/blob/master/ENTREGA%201/RODAS_Y_RIVERA.pdf
 
-2. Diseño :
+2. Design:
 
 * https://github.com/SantiRodas/GRUPO-BANCARIO/blob/master/ENTREGA%202/Diagrama%20de%20clases.pdf
 
 * https://github.com/SantiRodas/GRUPO-BANCARIO/blob/master/ENTREGA%202/RODAS_Y_RIVERA.pdf
 
-## Pruebas unitarias
+## Unit tests
 
-Se tiene implementado Test en las siguientes clases:
+Test is implemented in the following classes:
 
 1. BancoTest
 
@@ -41,21 +41,21 @@ Se tiene implementado Test en las siguientes clases:
 
 5. ServicioTest
 
-## Herramientas de uso
+## Usage tools
 
-* Eclipse : Utilizado para la creacion y diseño del codigo.
+* Eclipse: Used for the creation and design of the code.
 
-* LucidChart : Manejado para implementar los distintos diagramas del software.
+* LucidChart: Managed to implement the different diagrams of the software.
 
-* GitHub : Sistema de control de versiones.
+* GitHub: Version control system.
 
-## Autores
+## Authors
 
 1. Santiago Rodas Rodriguez
 
 2. Julian Andres Rivera
 
-## Ejemplos de ventanas
+## Window examples
 
 ![](https://github.com/SantiRodas/GRUPO-BANCARIO/blob/master/ENTREGA%203/IMAGENES/Final%20-%201.JPG)
 
