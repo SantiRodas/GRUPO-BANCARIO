@@ -19,13 +19,13 @@ This functional program allows you to add, search and delete different elements 
 
 1. Analysis:
 
-* https://github.com/SantiRodas/GRUPO-BANCARIO/blob/master/ENTREGA%201/RODAS_Y_RIVERA.pdf
+* [Delivery 1](https://github.com/SantiRodas/GRUPO-BANCARIO/blob/master/ENTREGA%201/RODAS_Y_RIVERA.pdf)
 
 2. Design:
 
-* https://github.com/SantiRodas/GRUPO-BANCARIO/blob/master/ENTREGA%202/Diagrama%20de%20clases.pdf
+* [Diagram of class](https://github.com/SantiRodas/GRUPO-BANCARIO/blob/master/ENTREGA%202/Diagrama%20de%20clases.pdf)
 
-* https://github.com/SantiRodas/GRUPO-BANCARIO/blob/master/ENTREGA%202/RODAS_Y_RIVERA.pdf
+* [Delivery 2](https://github.com/SantiRodas/GRUPO-BANCARIO/blob/master/ENTREGA%202/RODAS_Y_RIVERA.pdf)
 
 ## Unit tests
 
